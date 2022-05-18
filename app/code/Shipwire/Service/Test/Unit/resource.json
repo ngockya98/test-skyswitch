@@ -1,0 +1,7 @@
+{
+    "shipwire": {
+        "username": "dev@skyswitch.com",
+        "password": "Ingram$123",
+        "base_url": "https://api.beta.shipwire.com/api/"
+    }
+}

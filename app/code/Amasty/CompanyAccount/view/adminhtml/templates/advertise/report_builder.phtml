@@ -1,0 +1,22 @@
+<?php
+/**
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Amasty\CompanyAccount\ViewModel\ReportBuilder\Advertise $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+?>
+
+<?php if ($viewModel->isReportBuilderDisabled()): ?>
+    <section class="amcompany-suggestion-block">
+        <span class="amcompany-text">
+            <?= /* @noEscape */ __('Try') ?> <b><?= /* @noEscape */ __('Custom Reports Builder') ?></b>
+        </span>
+        <a class="amcompany-link abs-action-primary abs-action-l"
+           title="<?= /* @noEscape */ __('Explore') ?>"
+           href="<?= $escaper->escapeUrl($viewModel->getAdvUrl()) ?>">
+            <?= /* @noEscape */ __('Explore') ?>
+        </a>
+    </section>
+<?php endif; ?>

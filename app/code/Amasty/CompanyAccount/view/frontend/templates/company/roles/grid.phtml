@@ -1,0 +1,79 @@
+<?php
+/** @var \Amasty\CompanyAccount\Block\Roles\Grid $block */
+
+use Amasty\CompanyAccount\Controller\Role\Create;
+use Amasty\CompanyAccount\Controller\Role\Edit;
+use Amasty\CompanyAccount\Controller\Role\Delete;
+?>
+<?php $roles = $block->getRoles(); ?>
+<?php if ($block->isResourceAllowed(Create::RESOURCE)): ?>
+    <div class="actions-toolbar">
+        <div class="primary add-new-link">
+            <a href="<?= $block->escapeUrl($block->getCreateNewUrl()) ?>"
+               class="action add-new primary"
+               title="<?= $block->escapeHtmlAttr(__('+ New Role')) ?>">
+                <?= $block->escapeHtml(__('+ New Role')) ?>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($roles && count($roles)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-role-items" id="my-roles-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Roles')) ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= $block->escapeHtml(__('ID')) ?></th>
+                <th scope="col" class="col name"><?= $block->escapeHtml(__('Role Name')) ?></th>
+                <th scope="col" class="col qty"><?= $block->escapeHtml(__('Qty of Associated Users')) ?></th>
+                <th scope="col" class="col actions"><?= $block->escapeHtml(__('Actions')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($roles as $role): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('ID')) ?>" class="col id">
+                        <?= $block->escapeHtml($role->getRoleId()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Role Name')) ?>" class="col name">
+                        <?= $block->escapeHtml($role->getRoleName()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Qty of Associated Users')) ?>" class="col qty">
+                        <?= $block->escapeHtml($block->associatedUsersQty((int)$role->getRoleId())) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>" class="col actions">
+                        <?php if ($role->getRoleId()): ?>
+                            <?php if ($block->isResourceAllowed(Edit::RESOURCE)): ?>
+                                <a href="<?= $block->escapeUrl($block->getEditUrl((int)$role->getRoleId())) ?>"
+                                   class="action view">
+                                    <?= $block->escapeHtml(__('Edit')) ?>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($block->isResourceAllowed(Delete::RESOURCE) && $role->getRoleTypeId() != \Amasty\CompanyAccount\Model\Source\RoleType::TYPE_DEFAULT_USER): ?>
+                                <a href="<?= $block->escapeUrl($block->getDeleteUrl((int)$role->getRoleId())) ?>"
+                                   data-mage-init='{"amcompanyPrompt": {}}' class="action delete">
+                                    <?= $block->escapeHtml(__('Delete')) ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="amcompany-users-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+    <script type="text/x-magento-init">
+    {
+        ".actions .delete": {
+                "amcompanyPrompt": {
+                    "title": "<?= $block->escapeHtml(__('Are you Sure?')) ?>"
+            }
+        }
+    }
+    </script>
+<?php else: ?>
+    <div class="message info empty"><?= $block->escapeHtml(__('We couldn\'t find any records.')) ?></div>
+<?php endif ?>

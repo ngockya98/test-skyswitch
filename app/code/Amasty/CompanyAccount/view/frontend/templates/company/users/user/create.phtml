@@ -1,0 +1,114 @@
+<?php
+/** @var Amasty\CompanyAccount\Block\Users\User\Create $block */
+
+use Magento\Customer\Block\Widget\Name;
+
+$user = $block->getCurrentUser();
+$companyData = $block->getUserCompanyData();
+?>
+
+<form class="form create account form-create-user"
+      action="<?= $block->escapeUrl($block->getSaveActionUrl((int)$user->getId())) ?>"
+      method="post" id="form-validate"
+      enctype="multipart/form-data"
+      data-mage-init='{"validation":{}}'
+      autocomplete="off">
+    <?php if ($user->getId()): ?>
+        <input type="hidden" name="customer_id" value="<?= $block->escapeHtmlAttr($user->getId()) ?>"/>
+    <?php endif; ?>
+    <?php if ($block->getCompanyId()): ?>
+        <input type="hidden" name="company_id" value="<?= $block->escapeHtmlAttr($block->getCompanyId()) ?>"/>
+    <?php endif; ?>
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset info">
+        <?= $block->getLayout()->createBlock(Name::class)->setObject($user)->setForceUseCustomerAttributes(true)->toHtml() ?>
+        <div class="field user-email _required">
+            <label class="label" for="user_email">
+                <span><?= $block->escapeHtml(__('Email')) ?></span>
+            </label>
+            <div class="control">
+                <input type="email" name="email" id="user_email"
+                       value="<?= $block->escapeHtmlAttr($user->getEmail()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                       class="input-text validate-email required-entry"
+                       data-role="email"
+                       data-email_exist="true"
+                       data-email_in_company="true"
+                       data-mage-init='{"emailValidator": {
+                            "validateUrl": "<?= $block->escapeUrl($block->getUrl('amasty_company/account/validateEmail')) ?>"
+                       }}'
+                       data-validate="{required:true, 'validate-email':true, 'validate-email-exist': true, 'validate-customer-in-group': true}">
+            </div>
+        </div>
+        <div class="field role_id">
+            <label class="label" for="role_id">
+                <span><?= $block->escapeHtml(__('User Role')) ?></span>
+            </label>
+            <div class="control">
+                <?php $selectedRoleId = (int)$companyData->getRoleId() ?>
+                <select name="role_id" id="role_id"
+                        class="select"
+                        title="<?= $block->escapeHtmlAttr(__('User Role')) ?>">
+                    <?php foreach ($block->getRolesList()->getItems() as $index => $role): ?>
+                        <option value="<?= $block->escapeHtmlAttr($role->getRoleId()) ?>"
+                            <?= $block->isSelectedRole($selectedRoleId, (int)$role->getRoleId(), $index) ? ' selected' : '' ?>>
+                            <?= $block->escapeHtml($role->getRoleName()) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="field user-job_title">
+            <label class="label" for="user_job_title">
+                <span><?= $block->escapeHtml(__('Job Title')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text" name="job_title" id="user_job_title"
+                       value="<?= $block->escapeHtmlAttr($companyData->getJobTitle()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Job Title')) ?>"
+                       class="input-text">
+            </div>
+        </div>
+        <?= $block->getSpecialCustomAttributeHtml(\Magento\Customer\Block\Widget\Dob::class, 'dob') ?>
+        <?= $block->getSpecialCustomAttributeHtml(\Magento\Customer\Block\Widget\Taxvat::class, 'taxvat') ?>
+        <?= $block->getSpecialCustomAttributeHtml(\Magento\Customer\Block\Widget\Gender::class, 'gender') ?>
+        <?= $block->getCustomerAttributesHtml((int)$user->getId()) ?>
+
+        <div class="field user-telephone _required">
+            <label class="label" for="user_telephone">
+                <span><?= $block->escapeHtml(__('Phone Number')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text" name="telephone" id="user_telephone"
+                       value="<?= $block->escapeHtmlAttr($companyData->getTelephone()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+                       class="input-text" data-validate="{required:true}">
+            </div>
+        </div>
+        <div class="field status">
+            <label class="label" for="status">
+                <span><?= $block->escapeHtml(__('Status')) ?></span>
+            </label>
+            <div class="control">
+                <?php $selectedStatus = (int) $block->isCustomerActive($user); ?>
+                <select name="status" id="status" class="select" title="<?= $block->escapeHtmlAttr(__('Status')) ?>">
+                    <?php $statuses = $block->getStatuses(); ?>
+                    <?php foreach ($statuses as $status): ?>
+                        <option value="<?= $block->escapeHtmlAttr($status['value']) ?>"
+                            <?= $status['value'] == $selectedStatus ? ' selected' : '' ?>>
+                            <?= $block->escapeHtml($status['label']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>">
+                    <span><?= $block->escapeHtml(($user->getId()) ? __('Save') : __('Submit')) ?></span>
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>

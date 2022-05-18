@@ -1,0 +1,17 @@
+<?php
+$orders = $block->getOrders();
+?>
+<div class="checkout-success">
+    <p> <?= count($orders) . ' orders were created, one per distributor. These are the order numbers: '?></p>
+    <?php foreach ($orders as $order): ?>
+        <p>
+            <span style="font-weight: bold;">
+                <?= /* @noEscape*/ $order['distributor'] ?>:
+                <a href="<?= $block->escapeHtml($block->getViewOrderUrl($order['order_id'])) ?>" class="order-number">
+                    <strong><?= /* @noEscape*/ $order['order_number'] ?></strong>
+                </a>
+            </span>
+        </p>
+    <?php endforeach; ?>
+    <p><?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
+</div>

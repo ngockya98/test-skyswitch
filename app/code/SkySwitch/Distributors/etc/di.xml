@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="skyswitchDistributorsUpdatestock" xsi:type="object">SkySwitch\Distributors\Console\UpdateStock</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Catalog\Block\Product\View" type="SkySwitch\Distributors\Block\Product\View" />
+    <preference for="Magento\Quote\Model\ShippingMethodManagement" type="SkySwitch\Distributors\Model\Rewrite\Quote\ShippingMethodManagement" />
+    <preference for="Magento\Checkout\Model\ShippingInformationManagement" type="SkySwitch\Distributors\Model\Rewrite\Checkout\ShippingInformationManagement" />
+    <preference for="Magento\OfflineShipping\Model\Carrier\Flatrate" type="SkySwitch\Distributors\Model\Rewrite\Carrier\Flatrate" />
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="skyswitch-distributors-list-product" type="SkySwitch\Distributors\Plugin\Product\ListProduct" />
+    </type>
+</config>

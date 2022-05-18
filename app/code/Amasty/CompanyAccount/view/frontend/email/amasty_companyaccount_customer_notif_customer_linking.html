@@ -1,0 +1,23 @@
+<!--@subject You are linked to a company @-->
+<!--@vars {
+"var company_name":"Company Name",
+"var customer_name":"Customer Name",
+"var company_admin_email":"Company Admin Email",
+"var this.getUrl($store,'customer/account/',[_nosid:1])":"Customer Account URL"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p>{{trans "Dear"}} {{var customer_name}}</p>
+
+            <p>{{trans "You've been added to the %name as the company member. Once you <a href="%customer_url">sign in</a>, you’ll see company information tabs under your account. The visibility of tabs may be limited by assigned company role." name=$company_name customer_url=$this.getUrl($store,'customer/account/',[_nosid:1]) |raw}}</p>
+
+            <p>{{trans "If this is a mistake, please contact the company administrator at"}} {{var company_admin_email}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

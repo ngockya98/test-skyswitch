@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="customer">
+        <field name="company_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Company</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">extension_attributes.amcompany_attributes.company_id</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="disabledProvider" xsi:type="string">data.customer.extension_attributes.amcompany_attributes.is_super_user</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">${ $.provider }:${ $.disabledProvider }</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">extension_attributes.amcompany_attributes.status</item>
+                    <item name="label" xsi:type="string" translate="true">Is Active</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </field>
+        <container name="container_group">
+            <field name="group_id">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="disabledProvider" xsi:type="string">data.customer.extension_attributes.amcompany_attributes.edit_group</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">${ $.provider }:${ $.disabledProvider }</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="disable_auto_group_change">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="disabledProvider" xsi:type="string">data.customer.extension_attributes.amcompany_attributes.edit_group</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">${ $.provider }:${ $.disabledProvider }</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+        </container>
+    </fieldset>
+</form>

@@ -1,0 +1,10 @@
+<!--@subject {{trans "Company Store Credit Overdraft is used" }} @-->
+<!--@vars {
+"var repay_date":"Repay Overdraft Date"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{trans "Your Company used an Overdraft for placing the order. Please make sure used overdraft is repaid until %repay_date" repay_date=$repay_date}}
+
+{{template config_path="design/email/footer_template"}}

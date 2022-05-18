@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="skyswitchOrdersMigrateMacSerials" xsi:type="object">SkySwitch\Orders\Console\MigrateMacSerials</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Sales\Controller\Adminhtml\Order\View">
+        <plugin name="SkySwitchOrdersControllerAdminOrderView" type="SkySwitch\Orders\Plugin\Adminhtml\Order\ViewPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Sales\Controller\AbstractController\View">
+        <plugin name="SkySwitchOrdersControllerOrderView" type="SkySwitch\Orders\Plugin\Order\ViewPlugin" sortOrder="11"/>
+    </type>
+     <!--Sync the sales_order table and sales_order_grid-->
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="distributor_order_number" xsi:type="string">sales_order.distributor_order_number</item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="distributor_order_status" xsi:type="string">sales_order.distributor_order_status</item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="distributor_name" xsi:type="string">sales_order.distributor_name</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SkySwitch\Orders\Model\Session\Storage" type="Magento\Framework\Session\Storage">
+        <arguments>
+            <argument name="namespace" xsi:type="string">orders</argument>
+        </arguments>
+    </virtualType>
+    <type name="SkySwitch\Orders\Model\Session">
+        <arguments>
+            <argument name="storage" xsi:type="object">SkySwitch\Orders\Model\Session\Storage</argument>
+        </arguments>
+    </type>
+    <preference for="SkySwitch\Orders\Api\Webhook888VoipInterface"
+                type="SkySwitch\Orders\Model\Api\Process888VoipWebhook" />
+    <preference for="SkySwitch\Orders\Api\WebhookNtsInterface"
+                type="SkySwitch\Orders\Model\Api\ProcessNtsWebhook" />
+    <preference for="SkySwitch\Orders\Api\WebhookJenneInterface"
+                type="SkySwitch\Orders\Model\Api\ProcessJenneWebhook" />
+</config>

@@ -1,0 +1,15 @@
+<?php
+/** @var \Amasty\CompanyAccount\Block\Account\OrderPermissionChecker $block */
+?>
+<script type="text/x-magento-init">
+    {
+        ".table-order-items .actions .view,.order-number": {
+                "amcompanyPrompt": {
+                    "title": "<?= $block->escapeHtml(__('Access to the requested page is denied. If you think this '
+        . 'is a mistake, please contact your Company Administrator at %1', $block->getCompanyAdminEmail())) ?>",
+                    "showButtons": false
+            }
+        }
+    }
+
+    </script>

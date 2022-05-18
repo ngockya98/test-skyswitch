@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <update handle="customer_form_template_handle"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\CompanyAccount\Block\Users\Grid" name="amcompany.users.grid" cacheable="false" />
+        </referenceContainer>
+
+        <referenceBlock name="amcompany-customer-account-tab-company-users">
+            <arguments>
+                <argument name="is_highlighted" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

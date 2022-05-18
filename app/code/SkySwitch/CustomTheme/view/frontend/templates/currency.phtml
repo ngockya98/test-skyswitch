@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Currency switcher
+ *
+ * @var \Magento\Directory\Block\Currency $block
+ */
+
+?>
+<?php if ($block->getCurrencyCount() > 1): ?>
+    <?php $currencies = $block->getCurrencies(); ?>
+    <?php $currentCurrencyCode = $block->getCurrentCurrencyCode(); ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <li class="link currency" >
+        <a data-action="show-currency-switch" class="language-<?= $block->escapeHtml($block->getCurrentCurrencyCode()) ?>"><span><?= $block->escapeHtml($currentCurrencyCode) ?></span></a>
+
+
+
+        <ul class="switcher-dropdown" style="display: none">
+            <?php foreach ($currencies as $_code => $_name): ?>
+                <?php if ($_code != $currentCurrencyCode): ?>
+                    <li class="currency-<?= $block->escapeHtmlAttr($_code) ?> switcher-option">
+                        <a data-action="switch-currency-action"
+                           href="#" data-post='<?= /* @noEscape */ $block->getSwitchCurrencyPostData($_code) ?>'>
+                            <?= $block->escapeHtml($_code) ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </li>
+
+    <script>
+        require(['jquery'], function($){
+            "use strict";
+            $(document).ready(function(){
+                $(document).on('click', '.link.currency [data-action="show-currency-switch"]',  function(e) {
+                    e.stopPropagation();
+                    if ($(this).hasClass('active')) {
+                        $('.link.currency .switcher-dropdown').hide();
+                        $(this).removeClass('active');
+                    } else {
+                        $('.link.currency .switcher-dropdown').show();
+                        $(this).addClass('active');
+                    }
+                });
+            });
+        });
+    </script>
+<?php endif; ?>

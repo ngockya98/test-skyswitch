@@ -1,0 +1,5 @@
+<?xml version="1.0"?> 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd"> 
+    <entityType entity="catalog_product" name="hardware_type" model="SkySwitch\Products\Model\Import\Type\HardwareType" /> 
+    <entityType entity="catalog_product" name="software_type" model="SkySwitch\Products\Model\Import\Type\SoftwareType" /> 
+</config>

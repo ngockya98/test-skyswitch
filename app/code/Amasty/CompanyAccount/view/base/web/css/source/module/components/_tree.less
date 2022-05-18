@@ -1,0 +1,266 @@
+//
+//  jsTree framework styles override
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Colors
+//  --------------------------------------------
+
+@amcompany-tree__line__color: #cfcfcf;
+
+//
+//  Helpers
+//  --------------------------------------------
+
+.amcompany-tree-line {
+    &.-vertical {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        border-left: 1px dashed #cfcfcf;
+        content: '';
+    }
+
+    &.-horizontal {
+        position: absolute;
+        right: 0;
+        left: -18px;
+        width: @amcompany__indent__m;
+        border-top: 1px dashed #cfcfcf;
+        content: '';
+    }
+}
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-tree-block {
+        .amcompany-collapsible-root .jstree-children {
+            & {
+                position: relative;
+                margin: 0 0 0 @amcompany__indent;
+                padding: @amcompany__indent 0 0 18px;
+                list-style: none;
+            }
+
+            &:before {
+                &:extend(.amcompany-tree-line.-vertical all);
+            }
+
+            .jstree-last {
+                & {
+                    position: relative;
+                    margin: 0;
+                }
+
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin-top: 16px;
+                    margin-left: -18px;
+                    border-top: 1px solid #fff;
+                    border-left: 1px solid #fff;
+                    background: #fff;
+                    content: '';
+                }
+            }
+
+            .jstree-last.jstree-leaf:before {
+                margin-top: @amcompany__indent;
+            }
+
+            &[role='group'] .jstree-leaf {
+                & {
+                    .am-flex();
+
+                    position: relative;
+                    padding: 0 0 0 2px;
+                }
+
+                &:after {
+                    &:extend(.amcompany-tree-line.-horizontal all);
+
+                    top: 11px;
+                }
+
+                .jstree-ocl {
+                    display: none;
+                }
+            }
+
+            .jstree-node .jstree-ocl:after {
+                &:extend(.amcompany-tree-line.-horizontal all);
+
+                top: @amcompany__indent;
+            }
+        }
+
+        .jstree-closed,
+        .jstree-open {
+            > .jstree-ocl {
+                & {
+                    .am-flex(center, center);
+                    .transition(.1);
+
+                    position: relative;
+                    top: 2px;
+                    z-index: 3;
+                    display: inline-flex;
+                    box-sizing: border-box;
+                    margin: 0 8px 0 0;
+                    width: 22px;
+                    height: 22px;
+                    border: 2px solid @amcompany__color__primary;
+                    border-radius: 50%;
+                    background: #fff;
+                    cursor: pointer;
+                }
+
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    margin: 4px 5px;
+                    width: 6px;
+                    height: 6px;
+                    border-bottom: 2px solid #fff;
+                    border-left: 2px solid #fff;
+                    border-radius: 2px;
+                    content: '';
+                    transform: rotate(-45deg);
+                }
+
+                &:hover {
+                    background: @amcompany__hover__color__primary;
+                    color: #fff;
+                }
+
+                &:focus {
+                    background: @amcompany__focus__color__primary;
+                    color: #fff;
+                }
+            }
+        }
+
+        .jstree-closed > .jstree-ocl:before {
+            border-color: @amcompany__hover__color__primary;
+        }
+
+        .jstree-closed > .jstree-ocl:hover:before {
+            border-color: #fff;
+        }
+
+        .jstree-open > .jstree-ocl {
+            background: @amcompany__color__primary;
+            color: #fff;
+        }
+
+        .jstree-container-ul {
+            margin: 0;
+            padding: 0 0 0 @amcompany__indent;
+            list-style: none;
+        }
+
+        .jstree-anchor {
+            .am-flex(none, center, wrap);
+
+            display: inline-flex;
+            height: 23px;
+            color: #000;
+            text-decoration: none;
+            transform: scale(1);
+        }
+
+        .jstree-checkbox {
+            & {
+                .transition(.1);
+                .am-flex(center, center);
+
+                position: relative;
+                display: inline-flex;
+                box-sizing: border-box;
+                margin: 0 8px 0 0;
+                width: 16px;
+                height: 16px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            &:after {
+                .transition();
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                display: inline-flex;
+                margin: auto;
+                width: 6px;
+                height: 4px;
+                border-bottom: 2px solid #fff;
+                border-left: 2px solid #fff;
+                border-radius: 2px;
+                content: '';
+                opacity: 0;
+                transform: rotate(-45deg);
+            }
+
+            &:focus {
+                box-shadow: 0 2px 4px rgba(71, 118, 240, .4);
+            }
+        }
+
+        .jstree-clicked .jstree-checkbox {
+            & {
+                border-color: @amcompany__color__primary;
+                background: @amcompany__color__primary;
+                box-shadow: 0 2px 4px rgba(71, 118, 240, .4);
+            }
+
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    .amcompany-tree-block > .amcompany-toolbar {
+        & {
+            .am-flex();
+
+            padding: @amcompany__indent__m 0 @amcompany__indent__l;
+        }
+
+        .amcompany-button:not(:last-child) {
+            margin: 0 @amcompany__indent__m 0 0;
+            padding: 0 @amcompany__indent__m 0 0;
+            border-right: 1px solid #a6a6a6;
+            border-radius: 0;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amcompany-tree-block .jstree-checkbox:hover {
+        border-color: @amcompany__color__primary;
+        background: @amcompany__color__primary;
+    }
+}

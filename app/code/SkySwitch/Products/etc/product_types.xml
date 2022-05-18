@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+   <type name="hardware_type" label="Hardware" modelInstance="SkySwitch\Products\Model\Product\Type\HardwareProductType" indexPriority="60" sortOrder="80" isQty="true">
+   </type>
+   <type name="software_type" label="Software" modelInstance="SkySwitch\Products\Model\Product\Type\SoftwareProductType" indexPriority="70" sortOrder="90" isQty="true">
+   </type>
+</config>

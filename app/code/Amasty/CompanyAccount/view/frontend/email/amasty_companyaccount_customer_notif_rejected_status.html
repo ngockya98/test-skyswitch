@@ -1,0 +1,21 @@
+<!--@subject Your company account is Rejected @-->
+<!--@vars {
+"var company_name":"Company Name",
+"var rejected_at":"Rejected Date",
+"var reject_reason":"Rejected Reason"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p>{{var company_name}} {{trans "company account has been Rejected on"}} {{var rejected_at}}</p>
+            <p>{{trans "The reason:"}} {{var reject_reason}}</p>
+            <p>{{trans "All company users are not able to login."}}</p>
+            <p>{{trans "Please contact the seller for further information."}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

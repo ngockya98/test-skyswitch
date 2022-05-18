@@ -1,0 +1,20 @@
+<!--@subject Your account is Inactive @-->
+<!--@vars {
+"var customer_name":"Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p>{{trans "Dear"}} {{var customer_name}}</p>
+            <br>
+            <p>{{trans "Your account is no longer active. You will not be able to use it for login."}}</p>
+
+            <p>{{trans "If this is a mistake, please contact the seller."}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

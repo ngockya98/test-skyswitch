@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <update handle="customer_form_template_handle"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\CompanyAccount\Block\Users\User\Create" name="amcompany_user_create"
+                   cacheable="false"
+                   template="Amasty_CompanyAccount::company/users/user/create.phtml">
+                <block class="Amasty\CompanyAccount\Block\CustomerCustomAttributes\Form"
+                       template="Magento_CustomerCustomAttributes::form/userattributes.phtml"
+                       name="customer_form_user_attributes">
+                    <action method="setFormCode">
+                        <argument name="code" xsi:type="string">customer_account_create</argument>
+                    </action>
+                    <action method="setEntityModelClass">
+                        <argument name="code" xsi:type="string">Magento\Customer\Model\Customer</argument>
+                    </action>
+                </block>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="amcompany-customer-account-tab-company-users">
+            <arguments>
+                <argument name="is_highlighted" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

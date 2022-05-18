@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="payments-list" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="amasty_company_credit-form" xsi:type="array">
+                                                                    <item name="children" xsi:type="array">
+                                                                        <item name="cards" xsi:type="array">
+                                                                            <item name="component" xsi:type="string">uiComponent</item>
+                                                                            <item name="displayArea" xsi:type="string">cards</item>
+                                                                            <item name="children" xsi:type="array">
+                                                                                <item name="balance" xsi:type="array">
+                                                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                                                    <item name="config" xsi:type="array">
+                                                                                        <item name="template" xsi:type="string">Amasty_CompanyAccount/payment/card/balance</item>
+                                                                                    </item>
+                                                                                </item>
+                                                                                <item name="be_paid" xsi:type="array">
+                                                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                                                    <item name="config" xsi:type="array">
+                                                                                        <item name="tooltips" xsi:type="array">
+                                                                                            <item name="tooltipTpl" xsi:type="string">Amasty_CompanyAccount/form/component/tooltip-container</item>
+                                                                                            <item name="tooltipOne" xsi:type="array">
+                                                                                                <item name="description" xsi:type="string" translate="true">Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                                                                                    {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                                                                                    {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage.</item>
+                                                                                            </item>
+                                                                                            <item name="tooltipTwo" xsi:type="array">
+                                                                                                <item name="description" xsi:type="string" translate="true">The negative store credit balance has to be repaid until the stated date, otherwise the penalty will be applied every day to the whole overdraft amount.</item>
+                                                                                            </item>
+                                                                                            <item name="tooltipThree" xsi:type="array">
+                                                                                                <item name="description" xsi:type="string" translate="true">The penalty will be applied everyday on the overdraft amount until the Current Balance is positive or 0.</item>
+                                                                                            </item>
+                                                                                        </item>
+                                                                                        <item name="template" xsi:type="string">Amasty_CompanyAccount/payment/card/paid</item>
+                                                                                    </item>
+                                                                                </item>
+                                                                            </item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="renders" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="amasty_company_credit" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/view/payment/company-credit</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="amasty_company_credit" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

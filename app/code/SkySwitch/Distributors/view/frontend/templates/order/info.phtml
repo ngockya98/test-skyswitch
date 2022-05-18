@@ -1,0 +1,125 @@
+<?php $_order = $block->getOrder() ?>
+<div class="block block-order-details-view">
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Order Information')) ?></strong>
+    </div>
+    <div class="block-content">
+        <?php if (!$_order->getIsVirtual()): ?>
+            <?php if ($_order->getShippingAddress()): ?>
+                <div class="box box-order-shipping-address">
+                    <strong class="box-title"><span><?= $block->escapeHtml(__('Shipping Address')) ?></span></strong>
+                    <div class="box-content">
+                        <address>
+                            <?= /* @noEscape */ $block->getFormattedAddress($_order->getShippingAddress()) ?>
+                        </address>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="box box-order-shipping-method">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Shipping Method')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <?php if ($_order->getShippingDescription()): ?>
+                        <?= $block->escapeHtml($_order->getShippingDescription()) ?>
+                    <?php else: ?>
+                        <?= $block->escapeHtml(__('No shipping information available')) ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($_order->getBillingAddress()): ?>
+            <div class="box box-order-billing-address">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Billing Address')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <address><?= /* @noEscape */ $block->getFormattedAddress($_order->getBillingAddress()) ?></address>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="box box-order-billing-method">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Payment Method')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= $block->getPaymentInfoHtml() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php if (!empty($block->getDistributorName())): ?>
+    <div class="block block-order-details-view">
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__('Distributor Information')) ?></strong>
+        </div>
+        <div class="block-content">
+            <div class="box box-order-shipping-address">
+                <strong class="box-title" style="margin-top: 10px;">
+                    <span><?= $block->escapeHtml(__('Distributor')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <?= $block->escapeHtml($block->getDistributorName()) ?>
+                </div>
+                <strong class="box-title" style="margin-top: 10px;">
+                    <span><?= $block->escapeHtml(__('Order Number')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <?= $block->escapeHtml($_order->getDistributorOrderNumber()) ?>
+                </div>
+                <strong class="box-title" style="margin-top: 10px;">
+                    <span><?= $block->escapeHtml(__('Order Status')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <?= $block->escapeHtml($_order->getDistributorOrderStatus()) ?>
+                </div>
+            </div>
+            <div class="box box-order-shipping-address">
+                <?php if (!empty($block->getTrackingInfo())): ?>
+                    <div class="admin__page-section-item-title">
+                        <strong class="box-title" style="margin-top: 10px;">
+                            <span><?= $block->escapeHtml(__('Tracking Info')) ?></span>
+                        </strong>
+                        <table class="data table table-order-items">
+                            <tr>
+                                <th><?= $block->escapeHtml(__('Carrier')) ?></th>
+                                <th><?= $block->escapeHtml(__('Tracking Number')) ?></th>
+                            </tr>
+                            <?php foreach ($block->getTrackingInfo() as $tracking_info):?>
+                                <tr>
+                                    <td><?= /* @noEscape*/ $tracking_info['provider'] ?></td>
+                                    <td><?= /* @noEscape*/ $tracking_info['tracking_number'] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="box box-order-shipping-address" style="margin-left: 25px;">
+                <?php if (!empty($block->getProvisionInfo())): ?>
+                    <div class="admin__page-section-item-title">
+                        <strong class="box-title" style="margin-top: 10px;">
+                            <span><?= $block->escapeHtml(__('Provision Info')) ?></span>
+                        </strong>
+                        <table class="data table table-order-items">
+                            <tr>
+                                <th><?= $block->escapeHtml(__('Sku')) ?></th>
+                                <th><?= $block->escapeHtml(__('Mac')) ?></th>
+                                <th><?= $block->escapeHtml(__('Serial')) ?></th>
+                            </tr>
+                            <?php foreach ($block->getProvisionInfo() as $provision_info):?>
+                                <tr>
+                                    <td><?= /* @noEscape*/ $provision_info['sku'] ?></td>
+                                    <td><?= /* @noEscape*/ $provision_info['mac'] ?></td>
+                                    <td><?= /* @noEscape*/ $provision_info['serial'] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

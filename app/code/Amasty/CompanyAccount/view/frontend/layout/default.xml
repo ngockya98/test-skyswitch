@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Amasty\CompanyAccount\Block\Link" name="amcompany_toolbar_link" after="authorization-link-login" />
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Amasty\CompanyAccount\Block\Account\OrderPermissionChecker"
+                   name="amcompany_order_permission" template="Amasty_CompanyAccount::order_permission.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="top.links">
+            <block class="Amasty\CompanyAccount\Block\TopLink" name="amcompany.top.link" after="my-account-link">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">100</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

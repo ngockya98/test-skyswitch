@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<definitions name="TaxCalcWebService"
+             targetNamespace="urn:TaxCalcWeb"
+             xmlns:tns="urn:TaxCalcWeb"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <message name="TaxCalcWebRequest">
+      <part name="UnratedData" type="xsd:string" />
+   </message>
+   <message name="GeocodeWebRequest">
+      <part name="GeocodeData" type="xsd:string" />
+   </message>
+   <message name="MappingWebRequest">
+      <part name="MappingData" type="xsd:string" />
+   </message>
+   <message name="TaxCalcWebResponse">
+      <part name="Message" type="xsd:string" />
+   </message>
+   <portType name="TaxCalcWebPort">
+      <operation name="tax_rate">
+         <input message="tns:TaxCalcWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="delete_records">
+         <input message="tns:TaxCalcWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="retrieve_records">
+         <input message="tns:TaxCalcWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="geocode_retrieve">
+         <input message="tns:GeocodeWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="geocode_retrieve_cdr">
+         <input message="tns:GeocodeWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="geocode_retrieve_listing">
+         <input message="tns:GeocodeWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="mapping_retrieve">
+         <input message="tns:MappingWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+      <operation name="mapping_update">
+         <input message="tns:MappingWebRequest" />
+         <output message="tns:TaxCalcWebResponse" />
+      </operation>
+   </portType>
+   <binding name="TaxCalcWebBinding" type="tns:TaxCalcWebPort">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+      <operation name="tax_rate">
+         <soap:operation soapAction="urn:TaxCalcWeb#tax_rate" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="delete_records">
+         <soap:operation soapAction="urn:TaxCalcWeb#delete_records" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="retrieve_records">
+         <soap:operation soapAction="urn:TaxCalcWeb#retrieve_records" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="geocode_retrieve">
+         <soap:operation soapAction="urn:TaxCalcWeb#geocode_retrieve" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="geocode_retrieve_cdr">
+         <soap:operation soapAction="urn:TaxCalcWeb#geocode_retrieve_cdr" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="geocode_retrieve_listing">
+         <soap:operation soapAction="urn:TaxCalcWeb#geocode_retrieve_listing" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="mapping_retrieve">
+         <soap:operation soapAction="urn:TaxCalcWeb#mapping_retrieve" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="mapping_update">
+         <soap:operation soapAction="urn:TaxCalcWeb#mapping_update" />
+         <input>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="urn:TaxCalcWeb"
+                       encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+   </binding>
+   <service name="TaxCalcWebService">
+      <port name="TaxCalcWebPort" binding="tns:TaxCalcWebBinding">
+         <soap:address location="http://tcs1.csilongwood.com/cgi-bin/taxcalc.cgi" />
+      </port>
+   </service>
+</definitions>

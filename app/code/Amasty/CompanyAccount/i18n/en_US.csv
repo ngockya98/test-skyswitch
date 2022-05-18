@@ -1,0 +1,361 @@
+"Company Name","Company Name"
+ID,ID
+Status,Status
+"Customer Group","Customer Group"
+"Company Admin","Company Admin"
+"Delete Account","Delete Account"
+"Are you sure you want to delete account? The action cannot be undone after confirmation. The customer status of deleted company’s users will be set to Inactive.","Are you sure you want to delete account? The action cannot be undone after confirmation. The customer status of deleted company’s users will be set to Inactive."
+Save,Save
+"Refund to Company Store Credit","Refund to Company Store Credit"
+"We can't get the order instance right now.","We can't get the order instance right now."
+"Please update Amasty Base module. Re-upload it and replace all the files.","Please update Amasty Base module. Re-upload it and replace all the files."
+"Your company account request is being reviewed by admin.","Your company account request is being reviewed by admin."
+"Your company account got inactivated by admin. All company users are free to log in to their customer accounts, but can’t place orders. ","Your company account got inactivated by admin. All company users are free to log in to their customer accounts, but can’t place orders. "
+"T: %1","T: %1"
+"VAT/TAX ID: %1","VAT/TAX ID: %1"
+"Re-seller ID: %1","Re-seller ID: %1"
+"Create a Company Account","Create a Company Account"
+title,title
+"Company Account","Company Account"
+"Company Administrator","Company Administrator"
+"Company Accounts","Company Accounts"
+"We can't find account to delete.","We can't find account to delete."
+"Company was successfully removed","Company was successfully removed"
+"This Company no longer exists.","This Company no longer exists."
+"Edit Company ""%1""","Edit Company ""%1"""
+"New Company","New Company"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"A total of %1 record(s) have been deactivated.","A total of %1 record(s) have been deactivated."
+"A total of %1 record(s) have been activated.","A total of %1 record(s) have been activated."
+"You have saved the Company.","You have saved the Company."
+"Email was send successfully.","Email was send successfully."
+"A total of %1 record(s) have been saved.","A total of %1 record(s) have been saved."
+"Something went wrong.","Something went wrong."
+"Company Store Credit","Company Store Credit"
+"Company Orders","Company Orders"
+"New Company Account","New Company Account"
+"Edit Company Account","Edit Company Account"
+"An error occurred on the server. Your changes have not been saved.","An error occurred on the server. Your changes have not been saved."
+"There is already a company account associated with this email address. Please enter a different email address.","There is already a company account associated with this email address. Please enter a different email address."
+"Company Account information was successfully saved.","Company Account information was successfully saved."
+"Thank you! New Company Account was created successfully.","Thank you! New Company Account was created successfully."
+"Thank you! Your request is received and will be reviewed as soon as possible.","Thank you! Your request is received and will be reviewed as soon as possible."
+"New Role","New Role"
+"Role has been deleted successfully","Role has been deleted successfully"
+"An error occurred on the server. Please review the error log.","An error occurred on the server. Please review the error log."
+"You can't delete a Role which is assigned to Users. In order to proceed please assign associated Users to other Roles.","You can't delete a Role which is assigned to Users. In order to proceed please assign associated Users to other Roles."
+"Edit Role","Edit Role"
+"Company Roles","Company Roles"
+"The role was updated successfully.","The role was updated successfully."
+"The role was created successfully.","The role was created successfully."
+"Your changes have not been saved. Please enter a role title","Your changes have not been saved. Please enter a role title"
+"Your changes have not been saved. Please choose role permissions","Your changes have not been saved. Please choose role permissions"
+"New User","New User"
+"The customer was deleted successfully.","The customer was deleted successfully."
+"You can’t delete yourself. The action was not completed.","You can’t delete yourself. The action was not completed."
+"Edit User","Edit User"
+"Company Users","Company Users"
+"The customer was updated successfully.","The customer was updated successfully."
+"The customer was created successfully.","The customer was created successfully."
+"Can't retrieve credit currency.","Can't retrieve credit currency."
+"The ""%1"" value doesn't exist. Enter the value and try again.","The ""%1"" value doesn't exist. Enter the value and try again."
+"Validation Failed","Validation Failed"
+"The customer %1 (ID %2) is a Company Administrator and can’t be assigned to other company.","The customer %1 (ID %2) is a Company Administrator and can’t be assigned to other company."
+"Customer does not exist","Customer does not exist"
+Company,Company
+"is one of","is one of"
+"is not one of","is not one of"
+"Open Chooser","Open Chooser"
+"Input data is empty","Input data is empty"
+"Cannot update Credit event %credit_event","Cannot update Credit event %credit_event"
+"Could not append Credit events","Could not append Credit events"
+"Could not save Credit","Could not save Credit"
+"Order: <a href=""%1"">#%2</a>","Order: <a href=""%1"">#%2</a>"
+"Overdraft used: %1","Overdraft used: %1"
+"To be paid until %1","To be paid until %1"
+"The operation can’t be performed because it exceeds the available credit amount.","The operation can’t be performed because it exceeds the available credit amount."
+"Can't apply credit event.","Can't apply credit event."
+"Can't cancel order with Company Store Credit","Can't cancel order with Company Store Credit"
+"Customer not assigned for company.","Customer not assigned for company."
+"Company Store Credit cannot be used for this order
+                because your order amount exceeds your credit amount.","Company Store Credit cannot be used for this order
+                because your order amount exceeds your credit amount."
+"Can't place order with Company Store Credit","Can't place order with Company Store Credit"
+"Unable to remove overdraft with ID %1. Error: %2","Unable to remove overdraft with ID %1. Error: %2"
+"Unable to remove overdraft. Error: %1","Unable to remove overdraft. Error: %1"
+"Could not save Overdraft","Could not save Overdraft"
+"Overdraft with credit id ""%value"" does not exist.","Overdraft with credit id ""%value"" does not exist."
+"Can't update overdraft for this time.","Can't update overdraft for this time."
+"Credit with company id ""%value"" does not exist.","Credit with company id ""%value"" does not exist."
+"Credit with id ""%value"" does not exist.","Credit with id ""%value"" does not exist."
+Unlimited,Unlimited
+Allowed,Allowed
+"Not Allowed","Not Allowed"
+"Order Payment should be provided","Order Payment should be provided"
+"Order is canceled. We reverted %1 to the company credit.","Order is canceled. We reverted %1 to the company credit."
+"Order is cancelled. The order amount is not reverted to the company credit because the company to which this customer belongs does not exist.","Order is cancelled. The order amount is not reverted to the company credit because the company to which this customer belongs does not exist."
+"%1 was refunded to the company store credit.","%1 was refunded to the company store credit."
+"%1 was refunded offline.","%1 was refunded offline."
+"Unable to save company with ID %1. Error: %2","Unable to save company with ID %1. Error: %2"
+"Unable to save new company. Error: %1","Unable to save new company. Error: %1"
+"Company with specified ID ""%1"" not found.","Company with specified ID ""%1"" not found."
+"Unable to remove company with ID %1. Error: %2","Unable to remove company with ID %1. Error: %2"
+"Unable to remove company. Error: %1","Unable to remove company. Error: %1"
+"Unable to save permission with ID %1. Error: %2","Unable to save permission with ID %1. Error: %2"
+"Unable to save new permission. Error: %1","Unable to save new permission. Error: %1"
+"Permission with specified ID ""%1"" not found.","Permission with specified ID ""%1"" not found."
+"Unable to remove permission with ID %1. Error: %2","Unable to remove permission with ID %1. Error: %2"
+"Unable to remove permission. Error: %1","Unable to remove permission. Error: %1"
+"Unable to save role with ID %1. Error: %2","Unable to save role with ID %1. Error: %2"
+"Unable to save new role. Error: %1","Unable to save new role. Error: %1"
+"Role with specified ID ""%1"" not found.","Role with specified ID ""%1"" not found."
+"Unable to remove role with ID %1. Error: %2","Unable to remove role with ID %1. Error: %2"
+"Unable to remove role. Error: %1","Unable to remove role. Error: %1"
+"Default User","Default User"
+"Pending status is not available for an existed company","Pending status is not available for an existed company"
+"There was an error saving customer.","There was an error saving customer."
+"%1 (Default)","%1 (Default)"
+"Choose Company","Choose Company"
+"Default Group","Default Group"
+(disabled),(disabled)
+Pending,Pending
+Inactive,Inactive
+Active,Active
+Rejected,Rejected
+"Added by Admin","Added by Admin"
+"Subtracted by Admin","Subtracted by Admin"
+"Repaid by Company","Repaid by Company"
+"Overdraft Penalty Applied","Overdraft Penalty Applied"
+"Placed Order","Placed Order"
+"Placed Order (Overdraft Used)","Placed Order (Overdraft Used)"
+"Canceled Order","Canceled Order"
+"Refunded Order","Refunded Order"
+Set,Set
+Day(s),Day(s)
+Month(s),Month(s)
+Year(s),Year(s)
+"-- Please Select --","-- Please Select --"
+Default,Default
+"Default Administrator","Default Administrator"
+"You do not have permission to place an order.","You do not have permission to place an order."
+"You do not have permission to proceed the checkout.","You do not have permission to proceed the checkout."
+"Company with id: %1 no longer exists","Company with id: %1 no longer exists"
+"This customer is already assigned to company ""%1"" as a company administrator","This customer is already assigned to company ""%1"" as a company administrator"
+"This customer assigned to company %1 and group change prohibited","This customer assigned to company %1 and group change prohibited"
+"You can't delete the Company Administrator.
+                    In order to proceed please assign other Customer as Company Administrator of Company %1","You can't delete the Company Administrator.
+                    In order to proceed please assign other Customer as Company Administrator of Company %1"
+"Invalid login or password.","Invalid login or password."
+"The account is locked.","The account is locked."
+"Assign to Company Account","Assign to Company Account"
+"Are you sure you want to assign company to selected items?","Are you sure you want to assign company to selected items?"
+"Assign to","Assign to"
+"Page not found.","Page not found."
+Edit,Edit
+Undefined.,Undefined.
+Guest,Guest
+Try,Try
+"Custom Reports Builder","Custom Reports Builder"
+Explore,Explore
+"Check Current Balance.","Check Current Balance."
+"Calculated as {used_store_credit} minus {repayment_amount}, where: {used_store_credit} is the sum of orders paid with store credit less refunded amounts, {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage. Positive amount - the Company owes. Negative amount - the Store owes.","Calculated as {used_store_credit} minus {repayment_amount}, where: {used_store_credit} is the sum of orders paid with store credit less refunded amounts, {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage. Positive amount - the Company owes. Negative amount - the Store owes."
+"Warning! The overdraft payment period is overdue. Every day a <strong>%1%</strong> penalty is imposed on the entire overdraft amount(%2).","Warning! The overdraft payment period is overdue. Every day a <strong>%1%</strong> penalty is imposed on the entire overdraft amount(%2)."
+"The negative store credit balance has to be repaid until the stated date, otherwise the penalty will be applied every day to the whole overdraft amount.","The negative store credit balance has to be repaid until the stated date, otherwise the penalty will be applied every day to the whole overdraft amount."
+"The overdraft amount(%2) is due by <strong>%1</strong> inclusive.","The overdraft amount(%2) is due by <strong>%1</strong> inclusive."
+"The penalty will be applied everyday on the overdraft amount until the Current Balance is positive or 0.","The penalty will be applied everyday on the overdraft amount until the Current Balance is positive or 0."
+"Credit Operations","Credit Operations"
+Date,Date
+Operation,Operation
+Comment,Comment
+Amount,Amount
+Balance,Balance
+"There are no credit operations associated with your Company Account.","There are no credit operations associated with your Company Account."
+Orders,Orders
+"Order #","Order #"
+"Placed By","Placed By"
+"Ship To","Ship To"
+"Order Total","Order Total"
+Action,Action
+Actions,Actions
+"View Order","View Order"
+Reorder,Reorder
+"There are no orders associated with your Company Account.","There are no orders associated with your Company Account."
+"Placed by:","Placed by:"
+"Print Order","Print Order"
+"Company Information","Company Information"
+"Company Legal Address","Company Legal Address"
+Contacts,Contacts
+"Sales Representative","Sales Representative"
+Create,Create
+"Company Legal Name","Company Legal Name"
+"Company Email","Company Email"
+"VAT/TAX ID","VAT/TAX ID"
+"Re-seller ID","Re-seller ID"
+"Legal Address","Legal Address"
+"Street Address","Street Address"
+City,City
+Country,Country
+State/Province,State/Province
+"Please select a region, state or province.","Please select a region, state or province."
+"ZIP/Postal Code","ZIP/Postal Code"
+"Phone Number","Phone Number"
+Submit,Submit
+"+ New Role","+ New Role"
+Roles,Roles
+"Role Name","Role Name"
+"Qty of Associated Users","Qty of Associated Users"
+Delete,Delete
+"Are you Sure?","Are you Sure?"
+"We couldn't find any records.","We couldn't find any records."
+"Role Title","Role Title"
+"Role Access Permissions","Role Access Permissions"
+"+ New User","+ New User"
+Users,Users
+Name,Name
+"Company Role","Company Role"
+Email,Email
+Inactivate,Inactivate
+Activate,Activate
+"Are you Sure? This action will permanently delete the User and his/her Customer Account.","Are you Sure? This action will permanently delete the User and his/her Customer Account."
+"User Role","User Role"
+"Job Title","Job Title"
+"Access to the requested page is denied. If you think this is a mistake, please contact your Company Administrator at %1","Access to the requested page is denied. If you think this is a mistake, please contact your Company Administrator at %1"
+"Current Balance","Current Balance"
+"Issued Credit:","Issued Credit:"
+"Overdraft Limit:","Overdraft Limit:"
+"Change Balance","Change Balance"
+"To Be Paid","To Be Paid"
+"Send a Reminder","Send a Reminder"
+"Changes have been made to this section that have not been saved.","Changes have been made to this section that have not been saved."
+"This tab contains invalid data. Please resolve this before saving.","This tab contains invalid data. Please resolve this before saving."
+Apply,Apply
+"Select Items","Select Items"
+"Company registration request","Company registration request"
+"That is an automatic notification about new company creation.","That is an automatic notification about new company creation."
+Customer,Customer
+"Company details","Company details"
+"The company account is in Active status.","The company account is in Active status."
+"That is an automatic notification about submit of company registration request.","That is an automatic notification about submit of company registration request."
+"The company account is in Pending status.","The company account is in Pending status."
+"You have been appointed as the Sales Representative to %name company.","You have been appointed as the Sales Representative to %name company."
+"The status of company %name is now Active.","The status of company %name is now Active."
+"The Company Administrator of %name has been changed, and now you are a regular member of the company.","The Company Administrator of %name has been changed, and now you are a regular member of the company."
+"If you believe this is a mistake, please contact your manager for details.","If you believe this is a mistake, please contact your manager for details."
+Dear,Dear
+"Your account is no longer active. You will not be able to use it for login.","Your account is no longer active. You will not be able to use it for login."
+"If this is a mistake, please contact the seller.","If this is a mistake, please contact the seller."
+"You've been added to the %name as the company member. Once you <a href=""%customer_url"">sign in</a>, you’ll see company information tabs under your account. The visibility of tabs may be limited by assigned company role.","You've been added to the %name as the company member. Once you <a href=""%customer_url"">sign in</a>, you’ll see company information tabs under your account. The visibility of tabs may be limited by assigned company role."
+"If this is a mistake, please contact the company administrator at","If this is a mistake, please contact the company administrator at"
+"The status of company %name is now Inactive.","The status of company %name is now Inactive."
+"You have been appointed to %name as the Company Administrator.","You have been appointed to %name as the Company Administrator."
+"Please <a href=""%customer_url"">sign in</a> to manage company account and users.","Please <a href=""%customer_url"">sign in</a> to manage company account and users."
+"Your Company Credit Overdraft configuration got an update","Your Company Credit Overdraft configuration got an update"
+"There are changes applied to the Overdraft configuration for Your Company. The current state:","There are changes applied to the Overdraft configuration for Your Company. The current state:"
+"Overdraft: %overdraft_enabled_label","Overdraft: %overdraft_enabled_label"
+"Company Store Credit Overdraft is overdue","Company Store Credit Overdraft is overdue"
+"The overdraft payment period is overdue. Every day a %penalty% penalty is imposed on the entire overdraft amount until Current Balance is 0 or above.","The overdraft payment period is overdue. Every day a %penalty% penalty is imposed on the entire overdraft amount until Current Balance is 0 or above."
+"Company Store Credit Overdraft is used","Company Store Credit Overdraft is used"
+"Your Company used an Overdraft for placing the order. Please make sure used overdraft is repaid until %repay_date","Your Company used an Overdraft for placing the order. Please make sure used overdraft is repaid until %repay_date"
+"company account has been Rejected on","company account has been Rejected on"
+"The reason:","The reason:"
+"All company users are not able to login.","All company users are not able to login."
+"Please contact the seller for further information.","Please contact the seller for further information."
+"Your Company Store Credit got an update","Your Company Store Credit got an update"
+"There are changes made to your Store Credit balance: %amount","There are changes made to your Store Credit balance: %amount"
+"Current Balance: %balance","Current Balance: %balance"
+"Company Store Credit cannot be used for this order because your order amount exceeds your credit amount.","Company Store Credit cannot be used for this order because your order amount exceeds your credit amount."
+"The Company Store Credit method is not available in the selected currency. Please contact the seller.","The Company Store Credit method is not available in the selected currency. Please contact the seller."
+"Place Order","Place Order"
+"Expand All","Expand All"
+"Collapse All","Collapse All"
+No,No
+Yes,Yes
+"There is already an account with this email address.","There is already an account with this email address."
+"Amasty Company Accounts","Amasty Company Accounts"
+"Manage Companies","Manage Companies"
+Information,Information
+General,General
+"URL Key","URL Key"
+"Allow Company Creation for Customer Group(s)","Allow Company Creation for Customer Group(s)"
+"Approve Companies Automatically","Approve Companies Automatically"
+"If set to Yes, all new companies will automatically get Active status.","If set to Yes, all new companies will automatically get Active status."
+"Inactivate Customer upon Removing from Company Account","Inactivate Customer upon Removing from Company Account"
+"if disabled, the customer will still remain Active after being removed from Company in admin panel. Note: you can change Customer's Status on Customer edit page.","if disabled, the customer will still remain Active after being removed from Company in admin panel. Note: you can change Customer's Status on Customer edit page."
+"Admin Notifications","Admin Notifications"
+"Email Sender","Email Sender"
+"Email Receiver for 'New Company' Notifications","Email Receiver for 'New Company' Notifications"
+"Email Template for New Company Request","Email Template for New Company Request"
+"Email Template for New Company Creation","Email Template for New Company Creation"
+"Email Template for Sales Representative Appointment","Email Template for Sales Representative Appointment"
+"Customer Notifications","Customer Notifications"
+"Email Template for Active Status","Email Template for Active Status"
+"Email Template for Inactive Status","Email Template for Inactive Status"
+"Email Template for Rejected Status","Email Template for Rejected Status"
+"Email Template for Customer Linking to a Company","Email Template for Customer Linking to a Company"
+"Email Template for Delete Company","Email Template for Delete Company"
+"Email Template for New Company Administrator Appointment","Email Template for New Company Administrator Appointment"
+"Email Template for Previous Company Administrator Unassignment","Email Template for Previous Company Administrator Unassignment"
+"Email Template for Store Credit Changed by Admin","Email Template for Store Credit Changed by Admin"
+"Email Template for Changes Applied to Overdraft Configuration","Email Template for Changes Applied to Overdraft Configuration"
+"Email Template for Overdraft Used","Email Template for Overdraft Used"
+"Email Template for Overdue Overdraft Warning","Email Template for Overdue Overdraft Warning"
+"Company Store Credit (Amasty)","Company Store Credit (Amasty)"
+Enabled,Enabled
+Title,Title
+"New Order Status","New Order Status"
+"Payment from Applicable Countries","Payment from Applicable Countries"
+"Payment from Specific Countries","Payment from Specific Countries"
+"Sort Order","Sort Order"
+All,All
+View,View
+Add,Add
+"Place (Checkout)","Place (Checkout)"
+"Use Company Store Credit","Use Company Store Credit"
+"View (own orders)","View (own orders)"
+"View (orders of all Users)","View (orders of all Users)"
+"Payments Standard","Payments Standard"
+ZIP,ZIP
+"Edit Company","Edit Company"
+Back,Back
+Reset,Reset
+Save&Close,Save&Close
+"Rejected On","Rejected On"
+"Click here to choose a Customer","Click here to choose a Customer"
+"Choose Admin User","Choose Admin User"
+Cancel,Cancel
+"Assign the same Customer Group to all Users","Assign the same Customer Group to all Users"
+"All company members will be automatically assigned to this customer group.","All company members will be automatically assigned to this customer group."
+"VAT\TAX ID","VAT\TAX ID"
+"Reseller ID","Reseller ID"
+"Add New User","Add New User"
+"Choose User","Choose User"
+Remove,Remove
+Role,Role
+"Payment Restrictions","Payment Restrictions"
+"Restricted Payment Methods","Restricted Payment Methods"
+"Store Credit","Store Credit"
+"Credit Currency","Credit Currency"
+"Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage.","Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage."
+"Allow Overdraft","Allow Overdraft"
+"If enabled, company is allowed to have negative current balance up to set limit. It is also possible to charge penalty if negative balance remains unredeemed for more than specified period of time.","If enabled, company is allowed to have negative current balance up to set limit. It is also possible to charge penalty if negative balance remains unredeemed for more than specified period of time."
+"Overdraft Limit","Overdraft Limit"
+"Penalty-Free Period","Penalty-Free Period"
+"Overdue Payment Penalty, %","Overdue Payment Penalty, %"
+Done,Done
+"Choose Operation","Choose Operation"
+"Add New Company","Add New Company"
+"Set Active","Set Active"
+"Are you sure you want to activate selected company accounts?","Are you sure you want to activate selected company accounts?"
+"Set Inactive","Set Inactive"
+"Are you sure you want to deactivate selected company accounts?","Are you sure you want to deactivate selected company accounts?"
+"Are you sure you want to delete chosen companies? The action cannot be undone after confirmation. The customer status of deleted company’s users will be set to Inactive.","Are you sure you want to delete chosen companies? The action cannot be undone after confirmation. The customer status of deleted company’s users will be set to Inactive."
+"Is Active","Is Active"
+"Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                                                                                    {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                                                                                    {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage.","Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                                                                                    {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                                                                                    {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage."

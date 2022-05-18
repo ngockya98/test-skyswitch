@@ -1,0 +1,16 @@
+<!--@subject {{trans "Your Company Store Credit got an update" }} @-->
+<!--@vars {
+"var amount":"Event Amount",
+"var balance":"Current credit Balance",
+"var comment":"Event Comment"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "There are changes made to your Store Credit balance: %amount" amount=$amount}}</p>
+{{if comment}}
+    <p>{{trans "Comment: %comment" comment=$comment}}</p>
+{{/if}}
+<p>{{trans "Current Balance: %balance" balance=$balance}}</p>
+
+{{template config_path="design/email/footer_template"}}

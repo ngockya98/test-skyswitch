@@ -1,0 +1,6 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="tracking_info" type="SkySwitch\Orders\Api\Data\TrackingInfoInterface[]" />
+        <attribute code="provision_info" type="SkySwitch\Orders\Api\Data\ProvisionInterface[]" />
+    </extension_attributes>
+</config>

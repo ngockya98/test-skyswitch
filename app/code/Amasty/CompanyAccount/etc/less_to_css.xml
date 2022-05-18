@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:amasty:module:Amasty_Base:etc/less_to_css.xsd">
+    <module name="Amasty_CompanyAccount">
+        <handle name="default" />
+        <cssOptions fileName="amcompany" path="css/source/mkcss" />
+        <ifconfig>am_company_account/general/enabled</ifconfig>
+    </module>
+</config>

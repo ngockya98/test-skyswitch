@@ -1,0 +1,53 @@
+<?php
+/** @var Amasty\CompanyAccount\Block\Roles\Role\Create $block */
+
+$role = $block->getCurrentRole();
+?>
+
+<form id="form-validate"
+      class="amcompany-form-create block"
+      action="<?= $block->escapeUrl($block->getSaveActionUrl((int)$role->getRoleId())) ?>"
+      method="post"
+      enctype="multipart/form-data"
+      data-amcompany-js="form"
+      data-mage-init='{"validation":{}}'>
+    <?php if ($role->getRoleId()): ?>
+        <input type="hidden" name="role_id" value="<?= $block->escapeHtmlAttr($role->getRoleId()) ?>"/>
+    <?php endif; ?>
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="amcompany-fieldset fieldset info">
+        <div class="field role_title _required">
+            <label class="label" for="role_title">
+                <span><?= $block->escapeHtml(__('Role Title')) ?></span>
+            </label>
+            <input id="role_title"
+                   class="input-text"
+                   type="text"
+                   name="role_name"
+                   value="<?= $block->escapeHtmlAttr($role->getRoleName()) ?>"
+                   title="<?= $block->escapeHtmlAttr(__('Role Title')) ?>"
+                   data-validate="{required:true}">
+        </div>
+        <div class="amcompany-tree-block field _required" data-mage-init='<?= /* @noEscape */ $block->getTreeJson()?>'>
+            <label class="label">
+                <span><?= $block->escapeHtml(__('Role Access Permissions')) ?></span>
+            </label>
+            <div class="amcompany-toolbar" data-amcompany-js="toolbar"></div>
+            <div class="amcompany-tree"
+                 data-amcompany-js="tree"
+                 data-role="role-tree"
+                 tabindex="1">
+            </div>
+            <input type="hidden" name="role_permissions" data-amcompany-js="permissions"/>
+        </div>
+    </fieldset>
+    <div class="amcompany-toolbar">
+        <button type="submit" class="amcompany-button -fill -primary" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>">
+            <?php if ($role->getRoleId()): ?>
+                <?= $block->escapeHtml(__('Save')) ?>
+            <?php else: ?>
+                <?= $block->escapeHtml(__('Submit')) ?>
+            <?php endif; ?>
+        </button>
+    </div>
+</form>

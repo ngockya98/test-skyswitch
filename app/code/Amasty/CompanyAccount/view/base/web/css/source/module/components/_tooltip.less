@@ -1,0 +1,118 @@
+//
+//  Tooltip styles
+// _______________________________________________
+
+//
+//  Local variables
+//  ----------------------------------------------
+
+@amcompany-tooltip__border-color: #afadac;
+@amcompany-tooltip__background-color: #fffbbb;
+@amcompany-icon-help__size: 20px;
+@amcompany-icon-help: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAwQzQuNDc3IDAgMCA0LjQ3NyAwIDEwYzAgNS41MjIgNC40NzcgMTAgMTAgMTBzMTAtNC40NzggMTAtMTBjMC01LjUyMy00LjQ3OC0xMC0xMC0xMHptLjg2NyAxNi40M2MtLjI0NS4yMzgtLjU0LjM2LS44ODMuMzYtLjE2NiAwLS4zMjYtLjAzMi0uNDc4LS4wOTVhMS4zOTcgMS4zOTcgMCAwMS0uMzk3LS4yNDggMS4xNyAxLjE3IDAgMDEtLjI3NC0uMzc1IDEuMDkzIDEuMDkzIDAgMDEtLjEwMi0uNDdjMC0uMzMzLjEyMy0uNjE5LjM2OC0uODU4LjI0NC0uMjM4LjU0LS4zNi44ODItLjM2LjMzNCAwIC42MjYuMTE3Ljg3NS4zNDMuMjUuMjMuMzczLjUxLjM3My44NDYgMCAuMzM0LS4xMjIuNjE4LS4zNjYuODU3aC4wMDJ6bTIuOTI0LTkuMDcyYTIuODIgMi44MiAwIDAxLS4zNS43NzJjLS4xNTIuMjM0LS4zMzguNDYtLjU1NC42NzYtLjIxNi4yMTYtLjQ2LjQ0MS0uNzI4LjY3NS0uMjM0LjItLjQyNS4zNzQtLjU3LjUyNy0uMTQ3LjE1LS4yNjQuMzA0LS4zNTIuNDU2YTEuNiAxLjYgMCAwMC0uMTg0LjQ5Yy0uMDM1LjE3Ny0uMDU0IDEuMDE3LS4wNTQgMS4yNzV2LjQ1Nkg4LjkyN3YtLjY2N2MwLS4yOC4wMi0xLjE1Ny4wNjItMS4zOGEyLjc0NCAyLjc0NCAwIDAxLjU0NS0xLjIxMWMuMTQ3LS4xODYuMzMyLS4zODUuNTUzLS41OTZsLjc5LS43NTRjLjIyMS0uMi40MTItLjQyMi41NzEtLjY2Ny4xNTgtLjI0Ny4yMzYtLjU0NS4yMzYtLjg5NiAwLS40NTYtLjE0My0uODQtLjQzLTEuMTQ4LS4yODgtLjMxMS0uNjkzLS40NjctMS4yMi0uNDY3YTEuNzE1IDEuNzE1IDAgMDAtMS42NDkgMS4xNDIgMi4yOCAyLjI4IDAgMDAtLjE0MS42ODRsLTIuMTU4LS4xOTNjLjA3LS41NjIuMjItMS4wNjIuNDQ4LTEuNTAxLjIyNy0uNDM5LjUyMy0uODA5Ljg4NS0xLjExNmEzLjg0MiAzLjg0MiAwIDAxMS4yNDctLjY5M2MuNDY4LS4xNTcuOTcxLS4yMzYgMS41MDktLjIzNi41MDIgMCAuOTguMDczIDEuNDMuMjJhMy41NyAzLjU3IDAgMDExLjE5NC42NDljLjM0NS4yODYuNjE4LjY0LjgxNiAxLjA2LjE5OS40MjMuMjk4LjkwOS4yOTggMS40NTcgMCAuMzc1LS4wNC43MDYtLjEyMi45ODV2LjAwMXoiIGZpbGw9IiM2NjYiLz48L3N2Zz4=') center/@amcompany-icon-help__size no-repeat;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-tooltip-block {
+        & {
+            display: inline-block;
+            margin: 0 0 0 8px;
+            min-width: @amcompany-icon-help__size;
+            width: @amcompany-icon-help__size;
+            height: @amcompany-icon-help__size;
+            background: @amcompany-icon-help;
+            vertical-align: bottom;
+        }
+
+        &:hover,
+        &:focus {
+            position: relative;
+            z-index: 500;
+        }
+    }
+
+    .amcompany-tooltip-content {
+        & {
+            position: absolute;
+            right: -2.7rem;
+            bottom: 3.2rem;
+            z-index: 1;
+            display: none;
+            box-sizing: border-box;
+            padding: 1rem 1.5rem;
+            width: 32rem;
+            border: 1px solid @amcompany-tooltip__border-color;
+            border-radius: 1px;
+            background: @amcompany-tooltip__background-color;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .3);
+            color: @amcompany__color__text;
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        &:before,
+        &:after {
+            position: absolute;
+            top: 100%;
+            right: 2.6rem;
+            z-index: 3;
+            display: block;
+            box-sizing: border-box;
+            width: 0;
+            height: 0;
+            border: 1rem solid transparent;
+            border-top-color: @amcompany-tooltip__border-color;
+            content: '';
+        }
+
+        &:after {
+            z-index: 4;
+            margin-top: -1px;
+            border-top-color: @amcompany-tooltip__background-color;
+        }
+
+        .amcompany-tooltip-block:hover &,
+        .amcompany-tooltip-block:focus & {
+            display: block;
+        }
+    }
+
+    .checkout-index-index .amcompany-tooltip-block > .amcompany-tooltip-content {
+        & {
+            right: inherit;
+            left: -2.7rem;
+        }
+
+        &:before,
+        &:after {
+            right: inherit;
+            left: 2.6rem;
+        }
+    }
+}
+
+//
+//  Mobile only
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amcompany-tooltip-content {
+        & {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: inherit;
+            left: 0;
+            width: 100%;
+        }
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+}

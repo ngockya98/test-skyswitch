@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\Ui\Component\DataProvider">
+        <plugin name="Amasty_CompanyAccount::add_mass_actions" type="Amasty\CompanyAccount\Plugin\Customer\Ui\Component\DataProviderPlugin" />
+    </type>
+
+    <type name="Magento\Customer\Model\Customer\DataProvider">
+        <plugin name="Amasty_CompanyAccount::addCustomerCompanyId" type="Amasty\CompanyAccount\Plugin\Customer\Model\Customer\DataProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Customer\Model\Customer\DataProviderWithDefaultAddresses">
+        <plugin name="Amasty_CompanyAccount::addCustomerCompanyId" type="Amasty\CompanyAccount\Plugin\Customer\Model\Customer\DataProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\Reporting">
+        <plugin name="Amasty_CompanyAccount::salesGridCollection"
+                type="Amasty\CompanyAccount\Plugin\Framework\View\Element\UiComponent\DataProvider\ReportingPlugin"/>
+    </type>
+
+    <type name="Magento\Customer\Model\ResourceModel\Grid\Collection">
+        <plugin name="Amasty_CompanyAccount::customerCompanyFilter"
+                type="Amasty\CompanyAccount\Plugin\Customer\Model\ResourceModel\Grid\CollectionPlugin"/>
+    </type>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\NewCompanyRequestEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_admin_notif_new_company_request</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\NewCompanyEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_admin_notif_new_company_create</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\SalesRepresentativeEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_admin_notif_sales_representative_appointment</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\CompanyActiveEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_active_status</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\CompanyInactiveEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_inactive_status</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\CompanyRejectEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_rejected_status</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\CustomerCompanyLinkEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_customer_linking</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\CustomerDisableEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_customer_disable</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\NewCompanyAdminEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_new_admin</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\AdminUnassignEmailTemplate" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_admin_unassign</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\StoreCreditChanged" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_store_credit_changed</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\OverdraftConfigChanged" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_overdraft_config_changed</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\OverdraftUsed" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_overdraft_used</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Model\Source\OverdraftPenalty" type="Amasty\CompanyAccount\Model\Source\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_companyaccount_customer_notif_overdraft_penalty_applied</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\CompanyAccount\Model\Config\Backend\UrlKey">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="escaper" xsi:type="object">Magento\Framework\Escaper</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Backend\CreditEvent\Get">
+        <arguments>
+            <argument name="requiredFields" xsi:type="array">
+                <item name="type" xsi:type="const">Amasty\CompanyAccount\Api\Data\CreditEventInterface::TYPE</item>
+                <item name="amount" xsi:type="const">Amasty\CompanyAccount\Api\Data\CreditEventInterface::AMOUNT</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Condition\Company">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="backendData" xsi:type="object">Magento\Backend\Helper\Data</item>
+                <item name="customerResource" xsi:type="object">Amasty\CompanyAccount\Model\ResourceModel\Customer</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items">
+        <plugin name="Amasty_CompanyAccount::addRefundButton" type="Amasty\CompanyAccount\Plugin\Sales\Block\Adminhtml\Order\Creditmemo\Create\ItemsPlugin" />
+    </type>
+
+    <type name="Magento\CustomerBalance\Block\Adminhtml\Sales\Order\Creditmemo\Controls">
+        <plugin name="Amasty_CompanyAccount::hideRefundToStoreCredit" type="Amasty\CompanyAccount\Plugin\CustomerBalance\Block\Adminhtml\Sales\Order\Creditmemo\ControlsPlugin" />
+    </type>
+</config>

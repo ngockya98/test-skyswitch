@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table
+        name="skyswitch_orders_tracking"
+        resource="default"
+        engine="innodb"
+        comment="SkySwitch Order Tracking Info">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false"  identity="true" comment="primary key"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="order identifier"/>
+        <column xsi:type="varchar" length="36" name="provider" nullable="false" comment="carrier"/>
+        <column xsi:type="varchar" length="36" name="tracking_number" nullable="false" comment="tracking number"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign"
+                    referenceId="SKYSWITCH_ORDERS_ORDER_ID_FK"
+                    table="skyswitch_orders_tracking"
+                    column="order_id"
+                    referenceTable="sales_order"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table
+        name="skyswitch_orders_macs"
+        resource="default"
+        engine="innodb"
+        comment="SkySwitch Order Macs / Serials">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false"  identity="true" comment="primary key"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="order identifier"/>
+        <column xsi:type="varchar" length="36" name="mac" nullable="false" comment="Mac Address"/>
+        <column xsi:type="varchar" length="36" name="serial" nullable="false" comment="Serial Number"/>
+        <column xsi:type="varchar" length="36" name="sku" nullable="false" comment="Product SKU"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign"
+                    referenceId="SKYSWITCH_ORDERS_ORDER_ID_FK"
+                    table="skyswitch_orders_tracking"
+                    column="order_id"
+                    referenceTable="sales_order"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

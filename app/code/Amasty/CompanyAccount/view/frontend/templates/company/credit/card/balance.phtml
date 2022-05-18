@@ -1,0 +1,32 @@
+<?php
+use Amasty\CompanyAccount\Api\Data\CreditInterface;
+
+/** @var \Amasty\CompanyAccount\Block\Credit\Card $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<div class="amcompany-paycard-block -balance-card">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title"><?= $escaper->escapeHtml('Current Balance') ?></h3>
+            <span class="amcompany-value"
+                  title="<?= $escaper->escapeHtmlAttr($block->getCreditPrice(CreditInterface::BALANCE)) ?>">
+                <?= $escaper->escapeHtml($block->getCreditPrice(CreditInterface::BALANCE)) ?>
+            </span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <ul class="amcompany-list-block">
+            <?php if ($block->getCredit()->isOverdraftAllowed()): ?>
+                <li class="amcompany-item">
+                    <span class="amcompany-title"><?= $escaper->escapeHtml('Overdraft Limit') ?>:</span>
+                    <span class="amcompany-value">
+                        <?= $escaper->escapeHtml($block->getCreditPrice(CreditInterface::OVERDRAFT_LIMIT)) ?>
+                    </span>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</div>

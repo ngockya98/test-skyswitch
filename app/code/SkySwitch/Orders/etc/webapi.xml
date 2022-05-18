@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/process888VoipWebhook" method="POST">
+        <service class="SkySwitch\Orders\Api\Webhook888VoipInterface" method="processOrderInfo"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/processNtsWebhook" method="POST">
+        <service class="SkySwitch\Orders\Api\WebhookNtsInterface" method="processOrderInfo"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/processJenneWebhook" method="POST">
+        <service class="SkySwitch\Orders\Api\WebhookJenneInterface" method="processOrderInfo"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

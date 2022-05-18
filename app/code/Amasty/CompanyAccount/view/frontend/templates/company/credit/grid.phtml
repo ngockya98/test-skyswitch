@@ -1,0 +1,38 @@
+<?php
+/** @var \Amasty\CompanyAccount\Block\Credit\Grid $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<?php $creditEvents = $block->getCreditEvents(); ?>
+<?php if ($creditEvents): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history">
+            <caption class="table-caption"><?= $escaper->escapeHtml(__('Credit Operations')) ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col date"><?= $escaper->escapeHtml(__('Date')) ?></th>
+                <th scope="col" class="col type"><?= $escaper->escapeHtml(__('Operation')) ?></th>
+                <th scope="col" class="col comment"><?= $escaper->escapeHtml(__('Comment')) ?></th>
+                <th scope="col" class="col amount"><?= $escaper->escapeHtml(__('Amount')) ?></th>
+                <th scope="col" class="col balance"><?= $escaper->escapeHtml(__('Balance')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $creditEventHelper = $block->getCreditEventHelper() ?>
+            <?php foreach ($creditEvents as $creditEvent): ?>
+                <tr>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Date')) ?>" class="col date"><?= $escaper->escapeHtml($block->formatDate($creditEvent->getDate())) ?></td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Operation')) ?>" class="col type"><?= $escaper->escapeHtml($creditEventHelper->getTypeLabel($creditEvent->getType())) ?></td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Comment')) ?>" class="col comment"><?= /** @noEscape */ nl2br($escaper->escapeHtml($creditEventHelper->getComment($creditEvent), ['br', 'a'])) ?></td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Amount')) ?>" class="col amount"><?= $escaper->escapeHtml($creditEventHelper->getAmount($creditEvent)) ?></td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Balance')) ?>" class="col balance"><?= $escaper->escapeHtml($creditEventHelper->getBalance($creditEvent)) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= $escaper->escapeHtml(__('There are no credit operations associated with your Company Account.')) ?></span></div>
+<?php endif ?>

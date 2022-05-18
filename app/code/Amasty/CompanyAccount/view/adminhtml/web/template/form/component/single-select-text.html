@@ -1,0 +1,25 @@
+
+<input
+    class="admin__control-text"
+    type="hidden"
+    data-bind="
+        value: value,
+        attr: {
+            name: name,
+            id: uid
+        }"
+>
+<input
+    class="admin__control-text"
+    type="text"
+    click="action"
+    readonly
+    data-bind="
+        value: valueText,
+        attr: {
+            id: uidText,
+            placeholder: placeholder,
+            disabled: disabled,
+            maxlength: 255
+        }"
+>

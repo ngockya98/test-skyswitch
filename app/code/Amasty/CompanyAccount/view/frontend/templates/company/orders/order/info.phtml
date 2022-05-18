@@ -1,0 +1,7 @@
+<?php
+/** @var \Magento\Sales\Block\Order\Info $block */
+?>
+<div class="order-placed">
+    <span class="label"><?= $block->escapeHtml(__('Placed by:')) ?></span>
+    <?= $block->escapeHtml($block->getCustomerName()) ?>
+</div>

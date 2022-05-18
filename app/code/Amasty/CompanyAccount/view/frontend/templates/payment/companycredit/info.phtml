@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var \Amasty\CompanyAccount\Block\Payment\Info $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<dl class="payment-method">
+    <dt class="title"><?= $escaper->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+</dl>
+<?= $block->getChildHtml() ?>

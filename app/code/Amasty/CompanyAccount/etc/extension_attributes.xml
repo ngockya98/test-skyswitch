@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="amcompany_attributes" type="Amasty\CompanyAccount\Api\Data\CustomerInterface">
+            <join reference_table="amasty_company_account_customer"
+                  reference_field="customer_id"
+                  join_on_field="entity_id">
+                <field>company_id</field>
+                <field>job_title</field>
+                <field>telephone</field>
+                <field>role_id</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="amcompany_attributes" type="Amasty\CompanyAccount\Api\Data\OrderInterface">
+            <join reference_table="amasty_company_account_order"
+                  reference_field="company_order_id"
+                  join_on_field="entity_id">
+                <field>company_id</field>
+                <field>company_name</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+    <extension_attributes for="Amasty\CompanyAccount\Api\Data\CompanyInterface">
+        <attribute code="credit" type="Amasty\CompanyAccount\Api\Data\CreditInterface">
+            <join reference_table="amasty_company_credit"
+                  reference_field="company_id"
+                  join_on_field="company_id">
+                <field>id</field>
+                <field>company_id</field>
+                <field>balance</field>
+                <field>be_paid</field>
+                <field>currency_code</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+</config>

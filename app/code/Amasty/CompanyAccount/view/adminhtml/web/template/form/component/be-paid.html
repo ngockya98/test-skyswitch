@@ -1,0 +1,45 @@
+<div class="amcompany-paycard-block -bepaid-card" data-bind="css: { '-exceed': isOverdraftExist() && getOverdraftData('exceed') }">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title">
+                <span data-bind="i18n: 'To Be Paid'"></span>
+                <!-- ko if: $data.tooltips.tooltipOne -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipOne } --><!-- /ko -->
+                <!-- /ko -->
+            </h3>
+            <span class="amcompany-value" data-bind="text: bePaid, attr: {'title': bePaid}">0.00</span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <!-- ko if: isOverdraftExist() -->
+            <div class="amcompany-message">
+            <!-- ko if: getOverdraftData('exceed') -->
+                <i class="amcompany-icon-warning"></i>
+                <span data-bind="html: $t('Warning! The overdraft payment period is overdue. Every day a <strong>%1%</strong> penalty is imposed on the entire overdraft amount(%2).').replace('%1', getPenalty()).replace('%2', overdraftSum())"></span>
+                <!-- ko if: $data.tooltips.tooltipTwo -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipTwo } --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: getOverdraftData('exceed') -->
+                <span data-bind="html: $t('The overdraft amount(%2) is due by <strong>%1</strong> inclusive.').replace('%1', getOverdraftData('repay_date')).replace('%2', overdraftSum())"></span>
+                <!-- ko if: $data.tooltips.tooltipThree -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipThree } --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            </div>
+        <!-- /ko -->
+    </div>
+
+    <div class="amcompany-actions">
+        <!-- ko if: isOverdraftExist() -->
+            <button class="amcompany-button -clear" data-bind="attr: {
+                        'title': $t('Send a Reminder'),
+                        'aria-label': $t('Send a Reminder')
+                    }, click: sendNotification">
+                <span data-bind="i18n: 'Send a Reminder'"></span>
+            </button>
+        <!-- /ko -->
+    </div>
+</div>

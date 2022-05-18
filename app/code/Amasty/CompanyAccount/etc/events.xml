@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_before">
+        <observer name="Amasty_CompanyAccount::LockPlaceOrder" instance="Amasty\CompanyAccount\Observer\CheckoutSubmitBefore"/>
+    </event>
+
+    <event name="payment_method_is_active">
+        <observer name="Amasty_CompanyAccount::LockPayments" instance="Amasty\CompanyAccount\Observer\PaymentMethodIsActive"/>
+    </event>
+</config>

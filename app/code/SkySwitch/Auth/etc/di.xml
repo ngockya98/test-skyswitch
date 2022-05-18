@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="SkySwitch\Auth\Api\Data\SkySwitchProfileInterface"
+                type="SkySwitch\Auth\Model\Data\SkySwitchProfile"/>
+
+    <preference for="SkySwitch\Auth\Api\Data\CustomerAttributesInterface"
+                type="SkySwitch\Auth\Model\Data\CustomerAttributes"/>
+
+    <preference for="SkySwitch\Auth\Api\CustomerAttributeManagementInterface"
+                type="SkySwitch\Auth\Service\CustomerAttributeManager"/>
+
+    <preference for="SkySwitch\Auth\Api\Data\SkySwitchServiceInterface"
+                type="SkySwitch\Auth\Service\SkySwitchService"/>
+
+    <preference for="SkySwitch\Auth\Api\Data\SkySwitchSettingsInterface"
+                type="SkySwitch\Auth\Model\Data\SkySwitchSettings"/>
+
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="SkySwitch\Auth\Plugin\CustomerRepositoryPlugin"
+            type="SkySwitch\Auth\Plugin\CustomerRepositoryPlugin"/>
+    </type>
+</config>

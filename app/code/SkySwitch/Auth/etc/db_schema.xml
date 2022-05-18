@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table
+        name="sky_auth_customer_attributes"
+        resource="default"
+        engine="innodb"
+        comment="SkySwitch Customer Attributes">
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false"  identity="true" comment="customer identifier"/>
+        <column xsi:type="varchar" length="36" name="fusionauth_id" nullable="false" comment="Fusion auth identifier"/>
+        <column xsi:type="int" name="reseller_id" nullable="false" comment="The reseller this customer belongs to"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="customer_id"/>
+            <column name="fusionauth_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign"
+                    referenceId="SKY_CUST_ATTR_CUST_ENT_ID_FK"
+                    table="sky_auth_customer_attributes"
+                    column="customer_id"
+                    referenceTable="customer_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+
+    <table
+        name="sky_auth_company_attributes"
+        resource="default"
+        engine="innodb"
+        comment="SkySwitch Company Attributes">
+        <column xsi:type="int" name="company_id" nullable="false" identity="true" comment="Amasty company identifier"/>
+        <column xsi:type="text" name="billing_platform" nullable="false" comment="Reseller preferred billing platform"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="company_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,0 +1,76 @@
+//
+//  Massaction Styles
+// _______________________________________________
+
+//
+//  Imports
+//  ----------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-customer-action-form {
+        & {
+            .am-flex(space-between, none, wrap);
+
+            align-items: center;
+            padding: @amcompany__indent;
+        }
+
+        > .action-save {
+            margin: @amcompany__indent 0 0;
+            vertical-align: middle;
+        }
+    }
+
+    .amasty-customer-action-select {
+        margin: @amcompany__indent @amcompany__indent 0 0;
+        max-width: calc(~"100% - 80px");
+    }
+
+    .amasty-customer-action-label {
+        width: 100%;
+    }
+
+    // Override Magento styles
+    .amcompany_company_form_amcompany_company_form_general_parent_admin_modal .action-select-wrap .action-close,
+    .amcompany_company_form_amcompany_company_form_user_link_parent_modal .modal-content .action-close {
+        padding: 0;
+    }
+
+    .amcompany_company_form_amcompany_company_form_general_parent_admin_modal .modal-popup .action-close:before,
+    .amcompany_company_form_amcompany_company_form_user_link_parent_modal .modal-content .action-close:before,
+    .modal-slide .action-select-wrap .action-close:before {
+        font-size: 1rem;
+    }
+
+    .action-menu .action-submenu {
+        top: 100%;
+        margin-top: 2px;
+    }
+
+    .action-select-wrap .action-menu {
+        max-height: 300px;
+    }
+
+    @-moz-document url-prefix() {
+        .action-select-wrap ul.action-menu {
+            max-height: 45rem;
+        }
+    }
+
+    .action-select-wrap .action-menu-items {
+        > .action-menu .action-submenu,
+        > .abs-action-menu .action-submenu .action-submenu,
+        > .action-menu .action-submenu .action-submenu,
+        > .actions-split .dropdown-menu .action-submenu .action-submenu,
+        > .actions-split .action-menu .action-submenu .action-submenu {
+            right: initial;
+            left: 0;
+        }
+    }
+}

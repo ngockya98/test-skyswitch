@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">amcompany_company_form.amcompany_company_form_data_source</item>
+            <item name="deps" xsi:type="string">amcompany_company_form.amcompany_company_form_data_source</item>
+            <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/form</item>
+        </item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">amcompany_company_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Edit Company</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="array">
+                <item name="name" xsi:type="string">back</item>
+                <item name="label" xsi:type="string" translate="true">Back</item>
+                <item name="class" xsi:type="string">back</item>
+                <item name="url" xsi:type="string">*/*/</item>
+            </item>
+            <item name="delete" xsi:type="string">Amasty\CompanyAccount\Block\Adminhtml\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="array">
+                <item name="name" xsi:type="string">reset</item>
+                <item name="label" xsi:type="string" translate="true">Reset</item>
+                <item name="class" xsi:type="string">reset</item>
+                <item name="url" xsi:type="string">*/*/edit</item>
+            </item>
+            <item name="save_and_continue" xsi:type="string">Amasty\CompanyAccount\Block\Adminhtml\Edit\SaveAndContinueButton</item>
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">save</item>
+                <item name="label" xsi:type="string" translate="true"><![CDATA[Save&Close]]></item>
+                <item name="class" xsi:type="string">save primary</item>
+            </item>
+
+        </item>
+    </argument>
+    <dataSource name="amcompany_company_form.amcompany_company_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Amasty\CompanyAccount\Ui\DataProvider\Company\Form\DataProvider</argument>
+            <argument name="name" xsi:type="string">amcompany_company_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">company_id</argument>
+            <argument name="requestFieldName" xsi:type="string">company_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">General</item>
+            </item>
+        </argument>
+        <field name="company_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Company Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="company_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">amcompany_company</item>
+                    <item name="dataScope" xsi:type="string">company_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/dependency-select</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="rejected_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Rejected On</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="reject_reason">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="label" xsi:type="string">Because</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">false</item>
+                    <item name="dataScope" xsi:type="string">reject_reason</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="super_user_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Company Administrator</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/single-select-text</item>
+                    <item name="dataScope" xsi:type="string">super_user_id</item>
+                    <item name="dataScopeText" xsi:type="string">data.super_user_name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="placeholder" xsi:type="string" translate="true">Click here to choose a Customer</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="targetName" xsi:type="string">amcompany_company_form.amcompany_company_form.general.parent_admin_modal</item>
+                            <item name="actionName" xsi:type="string">toggleModal</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="targetName" xsi:type="string">amcompany_company_form.amcompany_company_form.general.parent_admin_modal.parent_admin_user_grid</item>
+                            <item name="actionName" xsi:type="string">render</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <container name="parent_admin_modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">modal</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                    <item name="options" xsi:type="array">
+                        <item name="type" xsi:type="string">slide</item>
+                        <item name="title" xsi:type="string" translate="true">Choose Admin User</item>
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Choose Admin User</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">index = parent_admin_user_grid</item>
+                                        <item name="actionName" xsi:type="string">save</item>
+                                    </item>
+                                    <item name="1" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <insertListing name="parent_admin_user_grid">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <!--Avoid admin__scope-old cssclass assign -->
+                        <item name="cssclass" xsi:type="string">user-grid-insert-listing</item>
+                        <item name="dataScope" xsi:type="string">super_user_ids</item>
+                        <item name="autoRender" xsi:type="boolean">false</item>
+                        <item name="selectionsProvider" xsi:type="string">amcompany_company_admin_user_listing.amcompany_company_admin_user_listing.admin_user_listing_columns.ids</item>
+                        <item name="externalProvider" xsi:type="string">amcompany_company_admin_user_listing.amcompany_company_admin_user_listing_data_source</item>
+                        <item name="ns" xsi:type="string">amcompany_company_admin_user_listing</item>
+                        <item name="realTimeLink" xsi:type="boolean">true</item>
+                        <item name="behaviourType" xsi:type="string">edit</item>
+                        <item name="dataLinks" xsi:type="array">
+                            <item name="imports" xsi:type="boolean">false</item>
+                            <item name="exports" xsi:type="boolean">true</item>
+                        </item>
+                        <item name="externalFilterMode" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+            </insertListing>
+        </container>
+        <field name="use_company_group">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Assign the same Customer Group to all Users</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">use_company_group</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/dependency-group</item>
+                </item>
+            </argument>
+            <settings>
+                <tooltip>
+                    <description >We recommend using ‘No’ option if customer groups are configured to be assigned automatically based on VAT ID validation results. Otherwise, the default settings will be ignored and all company users will have the same Customer Group.</description>
+                </tooltip>
+            </settings>
+        </field>
+
+        <field name="customer_group_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company\Group</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Group</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">customer_group_id</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="notice" translate="true" xsi:type="string">All company members will be automatically assigned to this customer group.</item>
+                </item>
+            </argument>
+        </field>
+        <field name="sales_representative_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company\AdminUser</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Sales Representative</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">sales_representative_id</item>
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="company_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Company Information</item>
+            </item>
+        </argument>
+        <field name="legal_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Company Legal Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="company_email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Company Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-email" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="vat_tax_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">VAT\TAX ID</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">vat_tax_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="reseller_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Reseller ID</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="company_address">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Company Legal Address</item>
+            </item>
+        </argument>
+        <field name="street">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Street Address</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">City</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="country">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company\Country</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Country</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">country_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">State/Province</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="region_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">amcompany_company</item>
+                    <item name="dataScope" xsi:type="string">region_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="postcode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">ZIP/Postal Code</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Phone Number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-no-html-tags" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="user_link">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Company Users</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <container name="button_set" template="ui/form/components/complex">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">container</item>
+                    <item name="componentType" xsi:type="string">container</item>
+                    <item name="label" xsi:type="string" />
+                </item>
+            </argument>
+            <container name="parent_buttons">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="boolean">false</item>
+                        <item name="formElement" xsi:type="string">container</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                        <item name="title" xsi:type="string" translate="true">Add New User</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">amcompany_company_form.amcompany_company_form.user_link.parent_modal</item>
+                                <item name="actionName" xsi:type="string">toggleModal</item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="targetName" xsi:type="string">amcompany_company_form.amcompany_company_form.user_link.parent_modal.parent_user_grid</item>
+                                <item name="actionName" xsi:type="string">render</item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </container>
+        </container>
+        <container name="parent_modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">modal</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                    <item name="options" xsi:type="array">
+                        <item name="type" xsi:type="string">slide</item>
+                        <item name="title" xsi:type="string" translate="true">Choose User</item>
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Choose User</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">index = parent_user_grid</item>
+                                        <item name="actionName" xsi:type="string">save</item>
+                                    </item>
+                                    <item name="1" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <insertListing name="parent_user_grid">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <!--Avoid admin__scope-old cssclass assign -->
+                        <item name="cssclass" xsi:type="string">user-grid-insert-listing</item>
+                        <item name="dataScope" xsi:type="string">company_user_container</item>
+                        <item name="autoRender" xsi:type="boolean">false</item>
+                        <item name="selectionsProvider" xsi:type="string">amcompany_company_user_listing.amcompany_company_user_listing.user_listing_columns.ids</item>
+                        <item name="externalProvider" xsi:type="string">amcompany_company_user_listing.amcompany_company_user_listing_data_source</item>
+                        <item name="ns" xsi:type="string">amcompany_company_user_listing</item>
+                        <item name="realTimeLink" xsi:type="boolean">true</item>
+                        <item name="behaviourType" xsi:type="string">edit</item>
+                        <item name="dataLinks" xsi:type="array">
+                            <item name="imports" xsi:type="boolean">false</item>
+                            <item name="exports" xsi:type="boolean">true</item>
+                        </item>
+                        <item name="externalFilterMode" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+            </insertListing>
+        </container>
+        <container name="company_user_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/dynamic-rows/dynamic-rows-grid</item>
+                    <item name="template" xsi:type="string">ui/dynamic-rows/templates/grid</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="addButton" xsi:type="boolean">false</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="columnsHeaderAfterRender" xsi:type="boolean">true</item>
+                    <item name="renderDefaultRecord" xsi:type="boolean">false</item>
+                    <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
+                    <item name="dataScope" xsi:type="string">customer_ids</item>
+                    <item name="identificationProperty" xsi:type="string">entity_id</item>
+                    <item name="identificationDRProperty" xsi:type="string">entity_id</item>
+                    <item name="dataProvider" xsi:type="string">data.company_user_container</item>
+                    <item name="positionProvider" xsi:type="string">position2</item>
+                    <item name="map" xsi:type="array">
+                        <item name="entity_id" xsi:type="string">entity_id</item>
+                        <item name="name" xsi:type="string">name</item>
+                        <item name="email" xsi:type="string">email</item>
+                        <item name="status" xsi:type="string">status</item>
+                        <item name="role" xsi:type="string">role</item>
+                    </item>
+                    <item name="links" xsi:type="array">
+                        <item name="insertData" xsi:type="string">${ $.provider }:${ $.dataProvider }</item>
+                    </item>
+                    <item name="dndConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="positionProvider" xsi:type="string">position2</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="entity_id">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">entity_id</item>
+                            <item name="label" xsi:type="string" translate="true">ID</item>
+                            <item name="sortOrder" xsi:type="string">10</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="customer_name">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">name</item>
+                            <item name="label" xsi:type="string" translate="true">Name</item>
+                            <item name="sortOrder" xsi:type="string">20</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="customer_email">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">email</item>
+                            <item name="label" xsi:type="string" translate="true">Email</item>
+                            <item name="sortOrder" xsi:type="string">30</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="role">
+                    <argument name="data" xsi:type="array">
+                       <item name="config" xsi:type="array">
+                           <item name="formElement" xsi:type="string">input</item>
+                           <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                           <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                           <item name="dataType" xsi:type="string">text</item>
+                           <item name="dataScope" xsi:type="string">role</item>
+                           <item name="label" xsi:type="string" translate="true">Role</item>
+                           <item name="sortOrder" xsi:type="string">40</item>
+                       </item>
+                    </argument>
+                </field>
+                <field name="status">
+                   <argument name="data" xsi:type="array">
+                       <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Customer\Status</item>
+                       <item name="config" xsi:type="array">
+                           <item name="formElement" xsi:type="string">select</item>
+                           <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                           <item name="component" xsi:type="string">Amasty_CompanyAccount/js/dynamic-rows/element/select-label</item>
+                           <item name="dataType" xsi:type="string">text</item>
+                           <item name="dataScope" xsi:type="string">status</item>
+                           <item name="label" xsi:type="string" translate="true">Status</item>
+                           <item name="sortOrder" xsi:type="string">50</item>
+                       </item>
+                   </argument>
+                </field>
+                <actionDelete>
+                   <argument name="data" xsi:type="array">
+                       <item name="config" xsi:type="array">
+                           <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                           <item name="componentType" xsi:type="string">actionDelete</item>
+                           <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                           <item name="dataType" xsi:type="string">text</item>
+                           <item name="label" xsi:type="string" translate="true">Action</item>
+                           <item name="sortOrder" xsi:type="number">99</item>
+                       </item>
+                   </argument>
+                </actionDelete>
+            </container>
+        </container>
+    </fieldset>
+    <fieldset name="paymet_restrictions">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Payment Restrictions</item>
+            </item>
+        </argument>
+        <field name="restricted_payments" class="Amasty\CompanyAccount\Ui\Component\Company\Form\RestrictedPayments">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Company\RestrictedPayments</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Restricted Payment Methods</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="dataScope" xsi:type="string">restricted_payments</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[For advanced configuration you can use <a href="https://amasty.com/payment-restrictions-for-magento-2.html?utm_source=demo&utm_medium=gotopage&utm_campaign=company_to_restriction_m2" target="_blank">Payment Restrictions</a> extension.]]></item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="store_credit">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/credit/fieldset</item>
+                <item name="template" xsi:type="string">Amasty_CompanyAccount/form/component/credit/fieldset</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Store Credit</item>
+                <item name="dataScope" xsi:type="string">store_credit</item>
+            </item>
+        </argument>
+
+        <field name="currency_code" class="Amasty\CompanyAccount\Ui\Component\Company\Form\CreditCurrency">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Credit\Currency</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Credit Currency</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">currency_code</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="balance" class="Amasty\CompanyAccount\Ui\Component\Company\Form\Balance">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">text</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/balance</item>
+                    <item name="template" xsi:type="string">Amasty_CompanyAccount/form/component/balance</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="be_paid" class="Amasty\CompanyAccount\Ui\Component\Company\Form\BePaid">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">text</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/be-paid</item>
+                    <item name="template" xsi:type="string">Amasty_CompanyAccount/form/component/be-paid</item>
+                    <item name="notificationUrl" xsi:type="url" path="*/*/sendCreditEmail" />
+                    <item name="tooltips" xsi:type="array">
+                        <item name="tooltipTpl" xsi:type="string">Amasty_CompanyAccount/form/component/tooltip-container</item>
+                        <item name="tooltipOne" xsi:type="array">
+                            <item name="description" xsi:type="string" translate="true">Calculated as {used_store_credit} minus {repayment_amount}, where:
+                                {used_store_credit} is the sum of orders paid with store credit less refunded amounts,
+                                {repayment_amount} is the sum of real money actually paid by Company to cover store credit usage.</item>
+                        </item>
+                        <item name="tooltipTwo" xsi:type="array">
+                            <item name="description" xsi:type="string" translate="true">The negative store credit balance has to be repaid until the stated date, otherwise the penalty will be applied every day to the whole overdraft amount.</item>
+                        </item>
+                        <item name="tooltipThree" xsi:type="array">
+                            <item name="description" xsi:type="string" translate="true">The penalty will be applied everyday on the overdraft amount until the Current Balance is positive or 0.</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="allow_overdraft">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" xsi:type="string" translate="true">Allow Overdraft</item>
+                    <item name="tooltip" xsi:type="array">
+                        <item name="description" xsi:type="string" translate="true">If enabled, company is allowed to have negative current balance up to set limit. It is also possible to charge penalty if negative balance remains unredeemed for more than specified period of time.</item>
+                    </item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">allow_overdraft</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_limit</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_repay_period</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_penalty</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_repay_period_settings</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_limit</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_repay_period</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="overdraft_limit" class="Amasty\CompanyAccount\Ui\Component\Company\Form\CreditPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">price</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/credit-price</item>
+                    <item name="label" xsi:type="string" translate="true">Overdraft Limit</item>
+                    <item name="notice" xsi:type="string">Specify the maximum value of negative balance.</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="listens" xsi:type="array">
+                        <item name="${ $.provider }:data.store_credit.currency_code" xsi:type="string">currencyCodeChanged</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="overdraft_repay_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Penalty-Free Period</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/repay-period</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_penalty</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_repay_period_settings</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_penalty</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">index = overdraft_repay_period_settings</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+                <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Credit\OverdraftRepay</item>
+            </argument>
+        </field>
+
+        <container name="overdraft_repay_period_settings">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/group</item>
+                </item>
+            </argument>
+            <field name="overdraft_repay_digit">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">int</item>
+                        <item name="label" xsi:type="boolean">false</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="default" xsi:type="string">1</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                            <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="overdraft_repay_type">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="label" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Credit\OverdraftRepayType</item>
+                </argument>
+            </field>
+        </container>
+
+        <field name="overdraft_penalty">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Overdue Payment Penalty, %</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-digits-range" xsi:type="string">1-100</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <insertListing name="credit_event_grid">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!--Avoid admin__scope-old cssclass assign -->
+                    <item name="cssclass" xsi:type="string">credit-event-grid-insert-listing</item>
+                    <item name="dataScope" xsi:type="string">credit_event</item>
+                    <item name="autoRender" xsi:type="boolean">true</item>
+                    <item name="selectionsProvider" xsi:type="string">amcompany_company_credit_event_listing.amcompany_company_credit_event_listing.credit_event_listing_columns.ids</item>
+                    <item name="externalProvider" xsi:type="string">amcompany_company_credit_event_listing.amcompany_company_credit_event_listing_data_source</item>
+                    <item name="ns" xsi:type="string">amcompany_company_credit_event_listing</item>
+                    <item name="realTimeLink" xsi:type="boolean">true</item>
+                    <item name="behaviourType" xsi:type="string">simple</item>
+                    <item name="dataLinks" xsi:type="array">
+                        <item name="imports" xsi:type="boolean">false</item>
+                        <item name="exports" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="externalFilterMode" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </insertListing>
+
+        <container name="change_balance_modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="store_credit" xsi:type="string">amcompany_company_form.amcompany_company_form.store_credit.change_balance_modal.store_credit</item>
+                    <item name="dataScope" xsi:type="string">change_balance</item>
+                    <item name="componentType" xsi:type="string">modal</item>
+                    <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/modal/change-balance</item>
+                    <item name="change_balance_url" xsi:type="url" path="*/*/changeBalance" />
+                    <item name="imports" xsi:type="array">
+                        <item name="formData.currency_code" xsi:type="string">${ $.provider }:data.store_credit.currency_code</item>
+                        <item name="formData.credit_event" xsi:type="string">${ $.provider }:data.store_credit.change_balance</item>
+                        <item name="formData.company_id" xsi:type="string">${ $.provider }:data.company_id</item>
+                    </item>
+                    <item name="options" xsi:type="array">
+                        <item name="type" xsi:type="string">slide</item>
+                        <item name="title" xsi:type="string" translate="true">Change Balance</item>
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Done</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">index = change_balance_modal</item>
+                                        <item name="actionName" xsi:type="string">changeBalance</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+
+            <fieldset name="store_credit">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="collapsible" xsi:type="boolean">false</item>
+                        <item name="opened" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+
+                <field name="type">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Amasty\CompanyAccount\Model\Source\Credit\AdminOperation</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Choose Operation</item>
+                            <item name="formElement" xsi:type="string">radioset</item>
+                            <item name="disabled" xsi:type="boolean">true</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="amount" class="Amasty\CompanyAccount\Ui\Component\Company\Form\CreditPrice">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">price</item>
+                            <item name="component" xsi:type="string">Amasty_CompanyAccount/js/form/element/credit-price</item>
+                            <item name="label" xsi:type="string" translate="true">Amount</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="listens" xsi:type="array">
+                                <item name="${ $.provider }:data.store_credit.currency_code" xsi:type="string">currencyCodeChanged</item>
+                            </item>
+                            <item name="disabled" xsi:type="boolean">true</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                                <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="comment">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="label" xsi:type="string">Comment</item>
+                            <item name="notice" xsi:type="string">Maximum 255 characters are allowed.</item>
+                            <item name="dataScope" xsi:type="string">comment</item>
+                            <item name="disabled" xsi:type="boolean">true</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="max_text_length" xsi:type="number">255</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+        </container>
+    </fieldset>
+</form>

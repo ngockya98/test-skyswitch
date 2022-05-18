@@ -1,0 +1,47 @@
+<!--@subject Company registration request @-->
+<!--@vars {
+"var company":"Company Model",
+"var customer_name":"Customer Name",
+"var company.company_name":"Company Name",
+"var company.legal_name":"Company Legal Name",
+"var company.company_email":"Company Email",
+"var company.vat_tax_id":"Company VAT/TAX ID",
+"var company.reseller_id":"Re-seller ID",
+"var company.address":"Company Street Address",
+"var company.city":"Company City",
+"var company.country":"Company Country",
+"var company.region":"Company State/Province",
+"var company.postcode":"Company ZIP/Postal Code",
+"var company.telephone":"Company Phone Number"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p><strong>{{trans "Company registration request"}}</strong></p>
+            <br>
+            <p>{{trans "That is an automatic notification about submit of company registration request."}}</p>
+
+            <p>{{trans "Customer"}}: {{var customer_name}}</p>
+
+            <p>{{trans "Company details"}}: </p>
+            <p>{{trans "Company Name"}}: {{var company.company_name}}</p>
+            <p>{{trans "Company Legal Name"}}: {{var company.legal_name}}</p>
+            <p>{{trans "Company Email"}}: {{var company.company_email}}</p>
+            <p>{{trans "VAT/TAX ID"}}: {{var company.vat_tax_id}}</p>
+            <p>{{trans "Re-seller ID"}}: {{var company.reseller_id}}</p>
+            <p>{{trans "Street Address"}}: {{var company.address}}</p>
+            <p>{{trans "City"}}: {{var company.city}}</p>
+            <p>{{trans "Country"}}: {{var company.country}}</p>
+            <p>{{trans "State/Province"}}: {{var company.region}}</p>
+            <p>{{trans "ZIP/Postal Code"}}: {{var company.postcode}}</p>
+            <p>{{trans "Phone Number"}}: {{var company.telephone}}</p>
+            <br>
+            <p>{{trans "The company account is in Pending status."}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

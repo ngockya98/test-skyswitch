@@ -1,0 +1,17 @@
+<!--@subject You are no longer Company Administrator @-->
+<!--@vars {
+"var company_name":"Company Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p>{{trans "The Company Administrator of %name has been changed, and now you are a regular member of the company." name=$company_name}}</p>
+            <p>{{trans "If you believe this is a mistake, please contact your manager for details."}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

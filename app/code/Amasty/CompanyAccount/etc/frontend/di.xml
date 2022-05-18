@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="amasty_company_account_root" xsi:type="array">
+                    <item name="class" xsi:type="string">Amasty\CompanyAccount\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="Amasty_CompanyAccount::lockCheckout" type="Amasty\CompanyAccount\Plugin\Checkout\Controller\Index\IndexPlugin" />
+    </type>
+
+    <type name="Amasty\Checkout\Controller\Index\Index">
+        <plugin name="Amasty_CompanyAccount::lockCheckout" type="Amasty\CompanyAccount\Plugin\Checkout\Controller\Index\IndexPlugin" />
+    </type>
+
+    <type name="Magento\Multishipping\Controller\Checkout\Index">
+        <plugin name="Amasty_CompanyAccount::lockCheckout" type="Amasty\CompanyAccount\Plugin\Checkout\Controller\Index\IndexPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Controller\Order\View">
+        <plugin name="Amasty_CompanyAccount::lockOrderView" type="Amasty\CompanyAccount\Plugin\Sales\Controller\Order\ViewPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Controller\AbstractController\OrderViewAuthorization">
+        <plugin name="Amasty_CompanyAccount::allowOrderView" type="Amasty\CompanyAccount\Plugin\Sales\Controller\AbstractController\OrderViewAuthorizationPlugin" />
+    </type>
+
+    <virtualType name="companyFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="company_id" xsi:type="object">Amasty\CompanyAccount\Model\SearchCriteria\CollectionProcessor\FilterProcessor\CompanyFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="companyOrderRepositoryModel" type="Magento\Sales\Model\OrderRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">companyFilterProcessor</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\CompanyAccount\Block\Orders\Grid">
+        <arguments>
+            <argument name="orderRepository" xsi:type="object">companyOrderRepositoryModel</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\Html\Links">
+        <plugin name="Amasty_CompanyAccount::disableHighlighted" type="Amasty\CompanyAccount\Plugin\Framework\View\Element\Html\LinksPlugin" />
+    </type>
+
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="amasty_company_credit" xsi:type="object">Amasty\CompanyAccount\Model\Payment\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

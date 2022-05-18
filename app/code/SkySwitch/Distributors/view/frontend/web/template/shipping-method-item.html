@@ -1,0 +1,18 @@
+<tbody>
+    <tr class="row">
+        <td text="method.distributor"></td>
+        <td text="method.products"></td>
+        <td>
+            <select class="shipping-rates" data-bind="options: method.rates,
+                optionsText: function(rate) {
+                    return rate.service_label + ' - $' + rate.price
+                },
+                optionsValue: function(rate) {
+                    return rate.service_label + '-' + method.distributor
+                },
+                optionsCaption: 'Select...',
+                event: { change: element.selectShippingMethod }">
+            </select>
+        </td>
+    </tr>
+</tbody>

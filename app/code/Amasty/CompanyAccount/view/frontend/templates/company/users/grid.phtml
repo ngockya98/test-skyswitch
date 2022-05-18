@@ -1,0 +1,98 @@
+<?php
+/** @var \Amasty\CompanyAccount\Block\Users\Grid $block */
+
+use Amasty\CompanyAccount\Controller\User\Create;
+use Amasty\CompanyAccount\Controller\User\Edit;
+use Amasty\CompanyAccount\Controller\User\Delete;
+?>
+<?php $users = $block->getUsers(); ?>
+<?php if ($block->isResourceAllowed(Create::RESOURCE)): ?>
+    <div class="actions-toolbar">
+        <div class="primary add-new-link">
+            <a href="<?= $block->escapeUrl($block->getCreateNewUrl()) ?>"
+               class="action add-new primary" title="<?= $block->escapeHtmlAttr(__('+ New User')) ?>">
+                <span><?= $block->escapeHtml(__('+ New User')) ?></span>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($users && count($users)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-user-items history" id="my-users-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Users')) ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= $block->escapeHtml(__('ID')) ?></th>
+                <th scope="col" class="col name"><?= $block->escapeHtml(__('Name')) ?></th>
+                <th scope="col" class="col role"><?= $block->escapeHtml(__('Company Role')) ?></th>
+                <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                <th scope="col" class="col email"><?= $block->escapeHtml(__('Email')) ?></th>
+                <th scope="col" class="col phone-number"><?= $block->escapeHtml(__('Phone Number')) ?></th>
+                <th scope="col" class="col actions"><?= $block->escapeHtml(__('Actions')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('ID')) ?>" class="col id">
+                        <?= $block->escapeHtml($user->getEntityId()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Name')) ?>" class="col name">
+                        <?= $block->escapeHtml($block->getName($user)) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Company Role')) ?>" class="col role">
+                        <?= $block->escapeHtml($block->getRoleName($user->getRoleName())) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>" class="col status">
+                        <?= $block->escapeHtml($block->getStatusLabel($user)) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="col email">
+                        <?= $block->escapeHtml($user->getEmail()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" class="col phone-number">
+                        <?= $block->escapeHtml($user->getTelephone()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>" class="col actions">
+                        <?php if ($user->getRoleId()): ?>
+                            <?php if ($block->isResourceAllowed(Edit::RESOURCE)): ?>
+                                <a href="<?= $block->escapeUrl($block->getEditUrl((int)$user->getEntityId())) ?>"
+                                   class="action view">
+                                    <span><?= $block->escapeHtml(__('Edit')) ?></span>
+                                </a>
+                                <a href="<?= $block->escapeUrl($block->getChangeStatusUrl((int)$user->getEntityId())) ?>"
+                                   class="action activate">
+                                    <span>
+                                        <?= $block->escapeHtml($user->getStatus() ? __('Inactivate') : __('Activate')) ?>
+                                    </span>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($block->isResourceAllowed(Delete::RESOURCE)): ?>
+                                <a href="<?= $block->escapeUrl($block->getDeleteUrl((int)$user->getEntityId())) ?>"
+                                   class="action delete">
+                                    <span><?= $block->escapeHtml(__('Delete')) ?></span>
+                                </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="amcompany-users-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+    <script type="text/x-magento-init">
+    {
+        ".actions .delete": {
+                "amcompanyPrompt": {
+                    "title": "<?= $block->escapeHtml(__('Are you Sure? This action will permanently '
+                            . 'delete the User and his/her Customer Account.')) ?>"
+            }
+        }
+    }
+
+    </script>
+<?php else: ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('We couldn\'t find any records.')) ?></span></div>
+<?php endif ?>

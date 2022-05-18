@@ -1,0 +1,21 @@
+<div class="amcompany-paycard-block -balance-card">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title" data-bind="i18n: 'Current Balance'"></h3>
+            <span class="amcompany-value" data-bind="text: $parents[2].getBalance(), attr: {'title': $parents[2].getBalance()}">0.00</span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <ul class="amcompany-list-block">
+
+            <!-- ko if: $parents[2].isOverdraftAllowed() -->
+                <li class="amcompany-item">
+                    <span class="amcompany-title" data-bind="i18n: 'Overdraft Limit:'"></span>
+                    <span class="amcompany-value" data-bind="text: $parents[2].getOverdraftLimit()">0.00</span>
+                </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+</div>

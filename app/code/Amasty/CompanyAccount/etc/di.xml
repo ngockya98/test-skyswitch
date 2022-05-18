@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\CompanyAccount\Api\Data\CompanyInterface" type="Amasty\CompanyAccount\Model\Company" />
+    <preference for="Amasty\CompanyAccount\Api\CompanyRepositoryInterface" type="Amasty\CompanyAccount\Model\Repository\CompanyRepository" />
+    <preference for="Amasty\CompanyAccount\Api\Data\CustomerInterface" type="Amasty\CompanyAccount\Model\Customer" />
+    <preference for="Amasty\CompanyAccount\Api\Data\OrderInterface" type="Amasty\CompanyAccount\Model\Order" />
+    <preference for="Amasty\CompanyAccount\Api\Data\PermissionInterface" type="Amasty\CompanyAccount\Model\Permission" />
+    <preference for="Amasty\CompanyAccount\Api\PermissionRepositoryInterface" type="Amasty\CompanyAccount\Model\Repository\PermissionRepository" />
+    <preference for="Amasty\CompanyAccount\Api\Data\RoleInterface" type="Amasty\CompanyAccount\Model\Role" />
+    <preference for="Amasty\CompanyAccount\Api\RoleRepositoryInterface" type="Amasty\CompanyAccount\Model\Repository\RoleRepository" />
+    <preference for="Amasty\CompanyAccount\Api\Data\CreditEventInterface" type="Amasty\CompanyAccount\Model\CreditEvent" />
+    <preference for="Amasty\CompanyAccount\Api\Data\CreditInterface" type="Amasty\CompanyAccount\Model\Credit" />
+    <preference for="Amasty\CompanyAccount\Api\Data\OverdraftInterface" type="Amasty\CompanyAccount\Model\Overdraft" />
+    <preference for="Amasty\CompanyAccount\Api\CreditRepositoryInterface" type="Amasty\CompanyAccount\Model\Repository\CreditRepository" />
+    <preference for="Amasty\CompanyAccount\Api\OverdraftRepositoryInterface" type="Amasty\CompanyAccount\Model\Repository\OverdraftRepository" />
+
+    <preference for="Amasty\CompanyAccount\Model\Credit\Query\GetNewInterface" type="Amasty\CompanyAccount\Model\Credit\Query\GetNew" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Query\GetByIdInterface" type="Amasty\CompanyAccount\Model\Credit\Query\GetByIdCache" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Query\GetByCompanyIdInterface" type="Amasty\CompanyAccount\Model\Credit\Query\GetByCompanyIdCache" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Query\GetEventsByCreditIdInterface" type="Amasty\CompanyAccount\Model\Credit\Query\GetEventsByCreditId" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Command\SaveInterface" type="Amasty\CompanyAccount\Model\Credit\Command\Save" />
+
+    <preference for="Amasty\CompanyAccount\Model\Credit\Event\Query\CreateCreditEventInterface" type="Amasty\CompanyAccount\Model\Credit\Event\Query\CreateCreditEvent" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Event\Query\GetEventsCountInterface" type="Amasty\CompanyAccount\Model\Credit\Event\Query\GetEventsCount" />
+
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsExceedInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsExceed" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsOverdraftExistInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsOverdraftExist" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetNewInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetNew" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetByCreditIdInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetByCreditIdCache" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Command\SaveInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Command\Save" />
+    <preference for="Amasty\CompanyAccount\Model\Credit\Overdraft\Command\DeleteInterface" type="Amasty\CompanyAccount\Model\Credit\Overdraft\Command\Delete" />
+
+    <type name="Amasty\CompanyAccount\Api\CreditRepositoryInterface">
+        <arguments>
+            <argument name="getNew" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Query\GetNewInterface\Proxy</argument>
+            <argument name="getByCompanyId" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Query\GetByCompanyIdInterface\Proxy</argument>
+            <argument name="save" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Command\SaveInterface\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Api\OverdraftRepositoryInterface">
+        <arguments>
+            <argument name="getNew" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetNewInterface\Proxy</argument>
+            <argument name="getByCreditId" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Query\GetByCreditIdInterface\Proxy</argument>
+            <argument name="isExceed" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsExceedInterface\Proxy</argument>
+            <argument name="commandSave" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Command\SaveInterface\Proxy</argument>
+            <argument name="commandDelete" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Command\DeleteInterface\Proxy</argument>
+            <argument name="isOverdraftExist" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Overdraft\Query\IsOverdraftExistInterface\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Amasty\CompanyAccount\Api\Data\CompanyInterface" xsi:type="array">
+                    <item name="read" xsi:type="array">
+                        <item name="credit" xsi:type="string">Amasty\CompanyAccount\Model\Extensions\Credit\ReadHandler</item>
+                    </item>
+                    <item name="create" xsi:type="array">
+                        <item name="credit" xsi:type="string">Amasty\CompanyAccount\Model\Extensions\Credit\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="credit" xsi:type="string">Amasty\CompanyAccount\Model\Extensions\Credit\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Credit\Event\Validator">
+        <arguments>
+            <argument name="conditions" xsi:type="array">
+                <item name="place_order" xsi:type="array">
+                    <item name="positive_balance" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Condition\PositiveBalance</item>
+                </item>
+                <item name="minus_admin" xsi:type="array">
+                    <item name="positive_balance" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Condition\PositiveBalance</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="am_company_listing_data_source"
+                      xsi:type="string">Amasty\CompanyAccount\Model\ResourceModel\Company\Grid\Collection</item>
+                <item name="amcompany_company_credit_event_listing_data_source"
+                      xsi:type="string">Amasty\CompanyAccount\Model\ResourceModel\CreditEvent\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Source\Company\RestrictedPayments">
+        <arguments>
+            <argument name="additionalPayments" xsi:type="array">
+                <item name="wps_express" xsi:type="array">
+                    <item name="code" xsi:type="const">Magento\Paypal\Model\Config::METHOD_WPS_EXPRESS</item>
+                    <item name="label" xsi:type="string" translate="true">Payments Standard</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Amasty\CompanyAccount\Acl\AclResource\Config\Reader\Filesystem"
+                 type="Magento\Framework\Acl\AclResource\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="fileName" xsi:type="string">amcompany_acl.xml</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\CompanyAccount\Acl\AclResource\Provider" type="Magento\Framework\Acl\AclResource\Provider">
+        <arguments>
+            <argument name="configReader" xsi:type="object">Amasty\CompanyAccount\Acl\AclResource\Config\Reader\Filesystem</argument>
+            <argument name="cacheKey" xsi:type="string">amcompany_acl_cache</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\CompanyAccount\Block\Roles\Role\Create">
+        <arguments>
+            <argument name="aclProvider" xsi:type="object">Amasty\CompanyAccount\Acl\AclResource\Provider</argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Company\CompanyManagement">
+        <arguments>
+            <argument name="aclProvider" xsi:type="object">Amasty\CompanyAccount\Acl\AclResource\Provider</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="amCompanyCustomer" type="Amasty\CompanyAccount\Plugin\Customer\Api\CustomerRepositoryPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="Amasty_CompanyAccount::amCompanyOrder" type="Amasty\CompanyAccount\Plugin\Sales\Api\OrderRepositoryPlugin" />
+    </type>
+
+    <type name="Magento\Customer\Model\AccountManagement">
+        <plugin name="Amasty_CompanyAccount::lockCustomerLogin" type="Amasty\CompanyAccount\Plugin\Customer\Model\AccountManagementPlugin" />
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Condition\Company">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="customerResource" xsi:type="object">Amasty\CompanyAccount\Model\ResourceModel\Customer</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sales\Model\Service\OrderService">
+        <plugin name="Amasty_CompanyAccount::saveOrder" type="Amasty\CompanyAccount\Plugin\Sales\Model\Service\OrderServicePlugin" />
+    </type>
+
+    <type name="Amazon\Payment\Gateway\Config\Config">
+        <plugin name="Amasty_CompanyAccount::checkAmazonPayment" type="Amasty\CompanyAccount\Plugin\Amazon\Payment\Gateway\Config\ConfigPlugin" />
+    </type>
+
+    <type name="Amazon\Core\Helper\Data">
+        <plugin name="Amasty_CompanyAccount::checkAmazonPaymentButton" type="Amasty\CompanyAccount\Plugin\Amazon\Core\Helper\DataPlugin" />
+    </type>
+
+    <type name="Magento\Paypal\Model\Config">
+        <plugin name="Amasty_CompanyAccount::checkPaypalPayment" type="Amasty\CompanyAccount\Plugin\Paypal\Model\ConfigPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Controller\Order\Reorder">
+        <plugin name="Amasty_CompanyAccount::disable-reorder" type="Amasty\CompanyAccount\Plugin\Sales\Controller\Order\ReorderPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Controller\Order\PrintAction">
+        <plugin name="Amasty_CompanyAccount::disable-print" type="Amasty\CompanyAccount\Plugin\Sales\Controller\Order\PrintActionPlugin" />
+    </type>
+
+    <!-- start payment method section -->
+    <virtualType name="AmastyCompanyCreditFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Amasty\CompanyAccount\Model\Payment\ConfigProvider::METHOD_NAME</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Amasty\CompanyAccount\Block\Payment\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">AmastyCompanyCreditValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">AmastyCompanyCreditValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">AmastyCompanyCreditCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastyCompanyCreditValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">AmastyCompanyCreditDefaultValueHandler</item>
+                <item name="active" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Config\ActiveHandler</item>
+                <item name="payment_action" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Config\PaymentActionValueHandler</item>
+                <item name="can_capture" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Config\CanCaptureValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastyCompanyCreditConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Amasty\CompanyAccount\Model\Payment\ConfigProvider::METHOD_NAME</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastyCompanyCreditDefaultValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\CompanyAccount\Model\Payment\Gateway\Config\ActiveHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\CompanyAccount\Model\Payment\Gateway\Config\PaymentActionValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\CompanyAccount\Model\Payment\Gateway\Config\CanCaptureValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\CompanyAccount\Model\Payment\Gateway\Command\SaleCommand">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="AmastyCompanyCreditCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="order" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Command\SaleCommand</item>
+                <item name="capture" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Command\SaleCommand</item>
+                <item name="cancel" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Command\CancelCommand</item>
+                <item name="refund" xsi:type="string">Amasty\CompanyAccount\Model\Payment\Gateway\Command\RefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastyCompanyCreditCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastyCompanyCreditValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">AmastyCompanyCreditCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- end payment method section -->
+
+    <type name="Amasty\CompanyAccount\Model\Company\Role\Acl\CreditPaymentStrategy">
+        <arguments>
+            <argument name="config" xsi:type="object">AmastyCompanyCreditConfig</argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Company\Role\Acl\IsAclShowed">
+        <arguments>
+            <argument name="strategies" xsi:type="array">
+                <item name="default" xsi:type="object">Amasty\CompanyAccount\Model\Company\Role\Acl\DefaultStrategy</item>
+                <item name="Amasty_CompanyAccount::use_credit" xsi:type="object">Amasty\CompanyAccount\Model\Company\Role\Acl\CreditPaymentStrategy</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Credit\AppendCreditEvent">
+        <arguments>
+            <argument name="changeActions" xsi:type="array">
+                <item name="default" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\DefaultStrategy\Proxy</item>
+                <item name="minus_admin" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\IssuedCreditStrategy\Proxy</item>
+                <item name="added_admin" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\IssuedCreditStrategy\Proxy</item>
+                <item name="repaid_company" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\BePaidStrategy\Proxy</item>
+                <item name="overdraft_penalty" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\BePaidStrategy\Proxy</item>
+                <item name="cancel_order" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\BePaidStrategy\Proxy</item>
+                <item name="refund_order" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\BePaidStrategy\Proxy</item>
+                <item name="place_order" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\PlaceOrderStrategy\Proxy</item>
+                <item name="place_order_overdraft" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Action\PlaceOrderStrategy\Proxy</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\CompanyAccount\Model\Credit\Event\Comment\FormatComments">
+        <arguments>
+            <argument name="retrievers" xsi:type="array">
+                <item name="comment" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Comment\DefaultRetrieveStrategy</item>
+                <item name="order" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Comment\OrderRetrieveStrategy</item>
+                <item name="overdraft_sum" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Comment\OverdraftSumRetrieveStrategy</item>
+                <item name="repay_date" xsi:type="object">Amasty\CompanyAccount\Model\Credit\Event\Comment\RepayDateRetrieveStrategy</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\Groupcat\Model\Rule\Condition\Customer\Combine">
+        <plugin name="Amasty_CompanyAccount::addConditionForGroupCat" type="Amasty\CompanyAccount\Plugin\Groupcat\Model\Rule\Condition\Customer\Combine\AddCompanyCondition" />
+    </type>
+</config>

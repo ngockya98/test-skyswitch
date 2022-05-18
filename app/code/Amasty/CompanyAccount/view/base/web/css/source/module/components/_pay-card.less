@@ -1,0 +1,219 @@
+//
+//  Pay card styles
+// _______________________________________________
+
+//
+//  Imports
+//  ----------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Local variables
+//  ----------------------------------------------
+
+@amcompany-paycard-block__balance__background: #f3f7fb;
+@amcompany-paycard-block__bepaid__background: #fff;
+@amcompany-paycard-block__bepaid__border-color: #d5e1ee;
+
+@amcompany-paycard-block__color: @amcompany__color__text;
+@amcompany-paycard-block__color__light: #747b89;
+@amcompany-paycard-exceed__background: #ffe9c9;
+@amcompany-paycard-exceed__border-color: #f0a247;
+@amcompany-paycard-exceed__color: #eb1225;
+
+@amcompany-icon-paycard__size: 58px;
+@amcompany-icon-paycard__balance: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYiIGhlaWdodD0iNDYiIHZpZXdCb3g9IjAgMCA0NiA0NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMy41ODQyIDE5LjAyMTRDMzUuMzY0NCAyMS4xNDgxIDM2Ljc3MjQgMjMuNDIwMyAzNy43OTE5IDI1Ljc2NTJDMzkuMDcwNCAyOC43MTY3IDM5LjcxNzggMzEuNzk3NSAzOS43MTc4IDM0LjkxODdDMzkuNzE3OCAzOS4wNjY5IDM2LjMzNTQgNDIuNDQ2OSAzMi4xODQzIDQyLjQ0NjlIMTMuODE1OUM5LjY2NDg0IDQyLjQ0NjkgNi4yODI0NyAzOS4wNjY5IDYuMjgyNDcgMzQuOTE4N0M2LjI4MjQ3IDMxLjc5NzUgNi45Mjk4MSAyOC43MTY3IDguMjA4MzIgMjUuNzY1MkM5LjIyNzg4IDIzLjQyMDMgMTAuNjQzOSAyMS4xNDgxIDEyLjQxNiAxOS4wMjE0QzE0LjUyOCAxNi40OTA1IDE2LjYzMTkgMTQuNzc2MiAxNy43MzI0IDEzLjk1OTVMMTMuMjgxOSA3LjIzOTk5QzEzLjAzMSA2Ljg1OTk1IDEzLjA3OTYgNi4zNTA1MiAxMy4zOTUyIDYuMDI3MDhDMTQuOTA4MyA0LjQ3NDU1IDE2LjQ1MzkgMy43NDY4IDE4LjI2NjQgMy43NDY4QzE5LjY5ODcgMy43NDY4IDIxLjE3OTUgNC4xODM0NSAyMy4xMDUzIDQuODg2OTRDMjMuMjUxIDQuOTQzNTQgMjMuMzk2NiA0Ljk2NzggMjMuNTY2NSA0Ljk2NzhDMjQuMTA1NSA0Ljk2NzggMjQuNzY1MSA0LjY5NjU2IDI1LjQ2NTMgNC40MDg2M0MyNS40OTA0IDQuMzk4MjcgMjUuNTE1NyA0LjM4NzkgMjUuNTQwOSA0LjM3NzUyQzI2LjQ2MzQgMy45ODkzOCAyNy41MjM0IDMuNTUyNzMgMjguNjgwNiAzLjU1MjczQzI5Ljk0MjkgMy41NTI3MyAzMS4wNzU3IDQuMDYyMTYgMzIuMTQzOCA1LjEwNTI2QzMyLjQ1OTQgNS40MDQ0NSAzMi41MjQyIDUuODczNDQgMzIuMzIxOSA2LjI1MzQ5TDI4LjE5NSAxMy45MDI5QzI5LjI4NzQgMTQuNzAzNSAzMS40MzE4IDE2LjQzMzkgMzMuNTg0MiAxOS4wMjE0Wk0xOC4yNjY0IDUuNjcxMjlDMTcuMTkwMiA1LjY3MTI5IDE2LjI5MiA2LjAyNzA4IDE1LjM1MzQgNi44MzU2OUwxOS41ODU0IDEzLjIyMzdIMjYuMzUwMUwzMC4yMzQyIDYuMDEwOTFDMjkuNTcwNyA1LjU0MTkxIDI5LjA0NDcgNS40NzcyMyAyOC42NzI1IDUuNDc3MjNDMjcuOTA1NCA1LjQ3NzIzIDI3LjExNDIgNS44MDczIDI2LjI4MjggNi4xNTQxN0wyNi4yNzczIDYuMTU2NDZDMjUuNDExNSA2LjUyMDMzIDI0LjUwNTIgNi44OTIyOSAyMy41NTg1IDYuODkyMjlDMjMuMTcgNi44OTIyOSAyMi43ODk3IDYuODI3NiAyMi40MzM3IDYuNjk4MjNDMjAuNzEwMSA2LjA1OTQyIDE5LjQxNTUgNS42NzEyOSAxOC4yNjY0IDUuNjcxMjlaTTEzLjgxNTkgNDAuNTA2MkgzMi4xODQzQzM1LjI2NzMgNDAuNTA2MiAzNy43NzU3IDM3Ljk5OTUgMzcuNzU5NiAzNC45MTg3QzM3Ljc1OTYgMjkuNzI3NCAzNS44NjYxIDI0LjgxOTIgMzIuMTE5NiAyMC4zMDcxQzI5Ljc1NjggMTcuNDUyNyAyNy4zNjE2IDE1LjY3MzggMjYuNjI1MiAxNS4xNjQ0SDE5LjM1ODhDMTguNjMwNSAxNS42ODE5IDE2LjIyNzMgMTcuNDUyNyAxMy44NjQ1IDIwLjMwNzFDMTAuMTI2MSAyNC44MTkyIDguMjI0NSAyOS43MzU1IDguMjI0NSAzNC45MTg3QzguMjI0NSAzNy45OTk1IDEwLjczMyA0MC41MDYyIDEzLjgxNTkgNDAuNTA2MlpNMjIuMDg1NyAyNy45NjQ5SDI0LjMxMDlDMjYuMTg4MiAyNy45NjQ5IDI3LjcxNzYgMjkuNDkzMiAyNy43MTc2IDMxLjM2OTFDMjcuNzE3NiAzMy4yMjg5IDI2LjIyMDYgMzQuNzQ5MSAyNC4zNTk1IDM0Ljc3MzRIMjQuMzM1MkgyNC4xNzM0VjM2LjE1NjFDMjQuMTczNCAzNi42ODk4IDIzLjczNjQgMzcuMTI2NCAyMy4yMDIzIDM3LjEyNjRDMjIuNjY4MyAzNy4xMjY0IDIyLjIzMTMgMzYuNjg5OCAyMi4yMzEzIDM2LjE1NjFWMzQuNzczNEgyMC4zMjE3QzE5Ljc4NzYgMzQuNzczNCAxOS4zNTA2IDM0LjMzNjcgMTkuMzUwNiAzMy44MDMxQzE5LjM1MDYgMzMuMjY5NCAxOS43ODc2IDMyLjgzMjcgMjAuMzIxNyAzMi44MzI3SDI0LjMxMDlDMjUuMTIwMSAzMi44MzI3IDI1Ljc3NTUgMzIuMTc3OCAyNS43NzU1IDMxLjM2OTFDMjUuNzc1NSAzMC41NjA1IDI1LjEyMDEgMjkuOTA1NiAyNC4zMTA5IDI5LjkwNTZIMjIuMDg1N0MyMC4yMDg0IDI5LjkwNTYgMTguNjc5IDI4LjM3NzMgMTguNjc5IDI2LjUwMTNDMTguNjc5IDI0LjYyNTMgMjAuMjA4NCAyMy4wOTcxIDIyLjA4NTcgMjMuMDk3MUgyMi4yMjMyVjIxLjc0NjdDMjIuMjIzMiAyMS4yMTMgMjIuNjYwMiAyMC43NzY0IDIzLjE5NDIgMjAuNzc2NEMyMy43MjgzIDIwLjc3NjQgMjQuMTY1MyAyMS4yMTMgMjQuMTY1MyAyMS43NDY3VjIzLjA5NzFIMjYuMDAyMUMyNi41MzYyIDIzLjA5NzEgMjYuOTczMSAyMy41MzM3IDI2Ljk3MzEgMjQuMDY3NEMyNi45NzMxIDI0LjYwMTEgMjYuNTM2MiAyNS4wMzc3IDI2LjAwMjEgMjUuMDM3N0gyMi4wODU3QzIxLjI3NjUgMjUuMDM3NyAyMC42MjExIDI1LjY5MjcgMjAuNjIxMSAyNi41MDEzQzIwLjYyMTEgMjcuMzA5OSAyMS4yNzY1IDI3Ljk2NDkgMjIuMDg1NyAyNy45NjQ5WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==') center/44px no-repeat;
+@amcompany-icon-paycard__bepaid: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYiIGhlaWdodD0iNDYiIHZpZXdCb3g9IjAgMCA0NiA0NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzEuNTI5NCA0MC41MzY0SDExLjc0MTFDOS4wMjc3OSA0MC41MzY0IDYuODI4MTkgMzguMzM2OCA2LjgyODE5IDM1LjYyMzVWOC4zNDIwOUw3LjA0MDEyIDguNTY1NDNDOC4wMjkxOCA5LjYwNzc1IDkuNjc3MjUgOS42NDcwMiAxMC43MTQ4IDguNjUyOTdMMTMuMjM0NCA2LjIzOTA1TDE1LjU1MTMgOC42MDE5MUMxNi41NDgzIDkuNjE4NzUgMTguMTc4OCA5LjY0MTE5IDE5LjIwMzUgOC42NTIxOEwyMS42OTI3IDYuMjQ5NTNMMjMuOTg4MSA4LjYwOTg3QzI0Ljk1OCA5LjYwNzMgMjYuNTQyMyA5LjY2MTQ0IDI3LjU3ODEgOC43MzI1NkwzMC4zNjcyIDYuMjMxMzZMMzIuNDc1NCA4LjUxMDQxQzMzLjQ5MjkgOS42MTA0MiAzNS4yMjgzIDkuNjIxNDUgMzYuMjU5OCA4LjUzNDQ3TDM2LjQ0MjMgOC4zNDIwOVYxMy4zMjQzQzM1LjczNjggMTMuMTgxMSAzNS4wMDY2IDEzLjEwNTkgMzQuMjU4OCAxMy4xMDU5QzI4LjIyOTIgMTMuMTA1OSAyMy4zNDEyIDE3Ljk5MzkgMjMuMzQxMiAyNC4wMjM1QzIzLjM0MTIgMzAuMDUzMiAyOC4yMjkyIDM0Ljk0MTIgMzQuMjU4OCAzNC45NDEyQzM1LjAwNjYgMzQuOTQxMiAzNS43MzY4IDM0Ljg2NiAzNi40NDIzIDM0LjcyMjhWMzUuNjIzNUMzNi40NDIzIDM4LjMzNjggMzQuMjQyNyA0MC41MzY0IDMxLjUyOTQgNDAuNTM2NFpNMzguMzUyOSAzNC4xNDc2VjM1LjYyMzVDMzguMzUyOSAzOS4zOTIgMzUuMjk3OSA0Mi40NDcgMzEuNTI5NCA0Mi40NDdIMTEuNzQxMUM3Ljk3MjYgNDIuNDQ3IDQuOTE3NiAzOS4zOTIgNC45MTc2IDM1LjYyMzVWNS4yNjMzNEM0LjkxNzYgNC42NDY3NiA1LjY3MDUzIDQuMzQ2MzkgNi4wOTQ5MyA0Ljc5MzY1TDguNDI2MDUgNy4yNTAzMkM4LjY4NjMzIDcuNTI0NjEgOS4xMjAwNCA3LjUzNDk0IDkuMzkzMDggNy4yNzMzNUwxMi43ODk0IDQuMDE5NTNDMTMuMDU5MyAzLjc2MDk2IDEzLjQ4NyAzLjc2NzY0IDEzLjc0ODcgNC4wMzQ1MkwxNi45MTU1IDcuMjY0MjdDMTcuMTc3OSA3LjUzMTg2IDE3LjYwNyA3LjUzNzc3IDE3Ljg3NjYgNy4yNzc1TDIxLjI0NjMgNC4wMjUwM0MyMS41MTY3IDMuNzY0MDEgMjEuOTQ3MyAzLjc3MDgyIDIyLjIwOTMgNC4wNDAyOEwyNS4zNTc4IDcuMjc3ODdDMjUuNjEzIDcuNTQwMzUgMjYuMDMgNy41NTQ2IDI2LjMwMjUgNy4zMTAxNkwyOS45OTIgNC4wMDE1QzMwLjI2OTUgMy43NTI2NCAzMC42OTU0IDMuNzcyNTIgMzAuOTQ4NSA0LjA0NjE1TDMzLjg3NzkgNy4yMTMwMkMzNC4xNDU3IDcuNTAyNSAzNC42MDI0IDcuNTA1NCAzNC44NzM4IDcuMjE5MzVMMzcuMTc1NiA0Ljc5MzY1QzM3LjYgNC4zNDYzOSAzOC4zNTI5IDQuNjQ2NzYgMzguMzUyOSA1LjI2MzM0VjEzLjg5OTVDNDIuMzU0IDE1LjUxOTEgNDUuMTc2NSAxOS40NDE3IDQ1LjE3NjUgMjQuMDIzNUM0NS4xNzY1IDI4LjYwNTQgNDIuMzU0IDMyLjUyOCAzOC4zNTI5IDM0LjE0NzZaTTEzLjM2NiAxOC42MDM4SDE1LjMxODdDMTYuOTY2MiAxOC42MDM4IDE4LjMwODIgMTkuOTE3NiAxOC4zMDgyIDIxLjUzMDNDMTguMzA4MiAyMy4xMjkxIDE2Ljk5NDYgMjQuNDM1OSAxNS4zNjEzIDI0LjQ1NjdIMTUuMzRIMTUuMTk4VjI1LjY0NTRDMTUuMTk4IDI2LjEwNDIgMTQuODE0NiAyNi40Nzk1IDE0LjM0NTkgMjYuNDc5NUMxMy44NzcyIDI2LjQ3OTUgMTMuNDkzOCAyNi4xMDQyIDEzLjQ5MzggMjUuNjQ1NFYyNC40NTY3SDExLjgxOEMxMS4zNDkzIDI0LjQ1NjcgMTAuOTY1OCAyNC4wODE0IDEwLjk2NTggMjMuNjIyNkMxMC45NjU4IDIzLjE2MzggMTEuMzQ5MyAyMi43ODg0IDExLjgxOCAyMi43ODg0SDE1LjMxODdDMTYuMDI4OCAyMi43ODg0IDE2LjYwNCAyMi4yMjU0IDE2LjYwNCAyMS41MzAzQzE2LjYwNCAyMC44MzUyIDE2LjAyODggMjAuMjcyMSAxNS4zMTg3IDIwLjI3MjFIMTMuMzY2QzExLjcxODYgMjAuMjcyMSAxMC4zNzY1IDE4Ljk1ODMgMTAuMzc2NSAxNy4zNDU2QzEwLjM3NjUgMTUuNzMzIDExLjcxODYgMTQuNDE5MiAxMy4zNjYgMTQuNDE5MkgxMy40ODY3VjEzLjI1ODNDMTMuNDg2NyAxMi43OTk2IDEzLjg3MDEgMTIuNDI0MiAxNC4zMzg4IDEyLjQyNDJDMTQuODA3NSAxMi40MjQyIDE1LjE5MDkgMTIuNzk5NiAxNS4xOTA5IDEzLjI1ODNWMTQuNDE5MkgxNi44MDI4QzE3LjI3MTUgMTQuNDE5MiAxNy42NTUgMTQuNzk0NiAxNy42NTUgMTUuMjUzM0MxNy42NTUgMTUuNzEyMSAxNy4yNzE1IDE2LjA4NzUgMTYuODAyOCAxNi4wODc1SDEzLjM2NkMxMi42NTU5IDE2LjA4NzUgMTIuMDgwNyAxNi42NTA1IDEyLjA4MDcgMTcuMzQ1NkMxMi4wODA3IDE4LjA0MDggMTIuNjU1OSAxOC42MDM4IDEzLjM2NiAxOC42MDM4Wk0xMC4zNzY1IDMxLjUyOTRIMTguNTY0N1YzMy40NEgxMC4zNzY1VjMxLjUyOTRaTTIzLjM0MTIgMzEuNTI5NEgxOS45Mjk0VjMzLjQ0SDIzLjM0MTJWMzEuNTI5NFpNMTAuMzc2NSAzNS42MjM1SDIzLjM0MTJWMzcuNTM0MUgxMC4zNzY1VjM1LjYyMzVaTTM0LjI1ODggMzMuMDMwNkMzOS4yMzMzIDMzLjAzMDYgNDMuMjY1OSAyOC45OTggNDMuMjY1OSAyNC4wMjM1QzQzLjI2NTkgMTkuMDQ5MSAzOS4yMzMzIDE1LjAxNjUgMzQuMjU4OCAxNS4wMTY1QzI5LjI4NDQgMTUuMDE2NSAyNS4yNTE4IDE5LjA0OTEgMjUuMjUxOCAyNC4wMjM1QzI1LjI1MTggMjguOTk4IDI5LjI4NDQgMzMuMDMwNiAzNC4yNTg4IDMzLjAzMDZaTTQwLjA0ODIgMjAuODcxNkwzMy42Mzg1IDI4Ljc4OTRMMjguOCAyNC43NTczTDMwLjAyMzEgMjMuMjg5NkwzMy4zNzI5IDI2LjA4MUwzOC41NjMyIDE5LjY2OTVMNDAuMDQ4MiAyMC44NzE2WiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMCI+CjxyZWN0IHdpZHRoPSI0NC4zNTI5IiBoZWlnaHQ9IjQ0LjM1MjkiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjgyMzQ4NiAwLjgyMzczKSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=') center/44px no-repeat;
+@amcompany-icon-paycard__balance__background-color: @amcompany__color__primary;
+@amcompany-icon-paycard__bepaid__background-color: @amcompany-paycard-exceed__border-color;
+
+@amcompany-icon-warning__size: 24px;
+@amcompany-icon-warning: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAzLjVsLTEwIDE3aDIwbC0xMC0xN3ptLTEuMTA1IDEyLjkyaDIuMTE0djIuMDEyaC0yLjExNFYxNi40MnptMS41OS0uODI4aC0xLjA1M2wtLjU4Ny00Ljc4N1Y4LjIwMmgyLjIxM3YyLjYwM2wtLjU3MyA0Ljc4N3oiIGZpbGw9IiNFQjUyMDIiLz48L3N2Zz4=') center/20px no-repeat;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-paycard-block {
+        & {
+            .am-word-break;
+
+            display: inline-flex;
+            align-items: flex-start;
+            flex-direction: column;
+            box-sizing: border-box;
+            margin-bottom: @amcompany__indent__l;
+            padding: 25px;
+            min-height: 240px;
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid;
+            border-radius: 20px;
+        }
+
+        > .amcompany-head {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        > .amcompany-content {
+            color: @amcompany-paycard-block__color__light;
+            font-size: 1.2rem;
+        }
+
+        > .amcompany-content > .amcompany-message {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        &.-balance-card {
+            margin-right: 20px;
+            border-color: @amcompany-paycard-block__balance__background;
+            background: @amcompany-paycard-block__balance__background;
+        }
+
+        &.-bepaid-card {
+            border-color: @amcompany-paycard-block__bepaid__border-color;
+            background: @amcompany-paycard-block__bepaid__background;
+        }
+
+        .amcompany-message .amcompany-tooltip-block {
+            margin-top: -2px;
+        }
+    }
+
+    .amcompany-paycard-block.-bepaid-card.-exceed {
+        & {
+            border-color: @amcompany-paycard-exceed__border-color;
+            background: @amcompany-paycard-exceed__background;
+        }
+
+        .amcompany-paycard-current .amcompany-value {
+            color: @amcompany-paycard-exceed__color;
+        }
+    }
+
+    .amcompany-paycard-block > .amcompany-actions {
+        & {
+            margin-top: auto;
+        }
+
+        > .amcompany-button {
+            & {
+                margin-top: 10px;
+                color: @amcompany-icon-paycard__balance__background-color;
+                font-weight: 600;
+            }
+
+            &:focus {
+                filter: brightness(.8);
+            }
+        }
+
+        > .amcompany-button > .amcompany-icon {
+            margin-right: 10px;
+            font-style: normal;
+            font-size: 2rem;
+            line-height: 1.9rem;
+        }
+    }
+
+    .amcompany-icon-paycard {
+        & {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            min-width: @amcompany-icon-paycard__size;
+            width: @amcompany-icon-paycard__size;
+            height: @amcompany-icon-paycard__size;
+            border-radius: 10px;
+        }
+
+        .-balance-card & {
+            background: @amcompany__color__primary @amcompany-icon-paycard__balance;
+        }
+
+        .-bepaid-card & {
+            background: @amcompany-icon-paycard__bepaid__background-color @amcompany-icon-paycard__bepaid;
+        }
+    }
+
+    .amcompany-icon-warning {
+        margin-right: 10px;
+        min-width: @amcompany-icon-warning__size;
+        width: @amcompany-icon-warning__size;
+        height: @amcompany-icon-warning__size;
+        background: @amcompany-icon-warning;
+    }
+
+    .amcompany-paycard-current {
+        & {
+            margin-bottom: 18px;
+            width: calc(~'100% - @{amcompany-icon-paycard__size} - 10px');
+            color: @amcompany-paycard-block__color;
+        }
+
+        .amcompany-title {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .amcompany-value {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 3.6rem;
+            line-height: 3.6rem;
+        }
+    }
+
+    .amcompany-list-block {
+        & {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        > .amcompany-item {
+            & {
+                margin: 0;
+                padding: 0;
+            }
+
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+        }
+
+        .amcompany-title {
+            padding-right: 5px;
+        }
+
+        .amcompany-value {
+            font-weight: 700;
+        }
+    }
+
+    .page-main .amcompany-paycard-block {
+        min-height: 200px;
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amcompany-paycard-block {
+        min-height: 230px;
+        max-width: 370px;
+    }
+}

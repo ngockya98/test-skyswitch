@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="cc_added">
+        <observer name="skyswitch_payments_save_revio_cc" instance="SkySwitch\Payments\Observer\SaveRevioCc" />
+    </event>
+    <event name="cc_deleted">
+        <observer name="skyswitch_payments_delete_revio_cc" instance="SkySwitch\Payments\Observer\DeleteRevioCc" />
+    </event>
+    <event name="cc_updated">
+        <observer name="skyswitch_payments_update_revio_cc" instance="SkySwitch\Payments\Observer\UpdateRevioCc" />
+    </event>
+</config>

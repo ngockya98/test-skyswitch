@@ -1,0 +1,34 @@
+<div class="amcompany-paycard-block -bepaid-card" data-bind="css: { '-exceed': $parents[2].isOverdraftExist() && $parents[2].getOverdraftData('exceed') }">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title">
+                <span data-bind="i18n: 'To Be Paid'"></span>
+                <!-- ko if: $data.tooltips.tooltipOne -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipOne } --><!-- /ko -->
+                <!-- /ko -->
+            </h3>
+            <span class="amcompany-value" data-bind="text: $parents[2].getPaid(), attr: {'title': $parents[2].getPaid()}">0.00</span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <!-- ko if: $parents[2].isOverdraftExist() -->
+        <div class="amcompany-message">
+            <!-- ko if: $parents[2].getOverdraftData('exceed') -->
+            <i class="amcompany-icon-warning"></i>
+            <span data-bind="html: $t('Warning! The overdraft payment period is overdue. Every day a <strong>%1%</strong> penalty is imposed on the entire overdraft amount(%2).').replace('%1', $parents[2].getOverdraftData('penalty')).replace('%2', $parents[2].getOverdraftSum())"></span>
+                <!-- ko if: $data.tooltips.tooltipTwo -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipTwo } --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: $parents[2].getOverdraftData('exceed') -->
+            <span data-bind="html: $t('The overdraft amount(%2) is due by <strong>%1</strong> inclusive.').replace('%1', $parents[2].getOverdraftData('repay_date')).replace('%2', $parents[2].getOverdraftSum())"></span>
+                <!-- ko if: $data.tooltips.tooltipThree -->
+                    <!-- ko template: { name: $data.tooltips.tooltipTpl, data: tooltips.tooltipThree } --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

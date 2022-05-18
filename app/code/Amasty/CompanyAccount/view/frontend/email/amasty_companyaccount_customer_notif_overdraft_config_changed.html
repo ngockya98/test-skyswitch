@@ -1,0 +1,23 @@
+<!--@subject {{trans "Your Company Credit Overdraft configuration got an update" }} @-->
+<!--@vars {
+"var overdraft_enabled":"Is Overdraft Enabled For Credit",
+"var overdraft_enabled_label":"Is Overdraft Enabled Label",
+"var overdraft_limit":"Overdraft Limit",
+"var overdraft_repay":"Overdraft Repay",
+"var overdraft_repay_period":"Overdraft Penalty-Free Period",
+"var overdraft_penalty":"Overdraft Penalty"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "There are changes applied to the Overdraft configuration for Your Company. The current state:"}}</p>
+<p>{{trans "Overdraft: %overdraft_enabled_label" overdraft_enabled_label=$overdraft_enabled_label}}</p>
+{{if overdraft_enabled }}
+    <p>{{trans "Overdraft Limit: %overdraft_limit" overdraft_limit=$overdraft_limit}}</p>
+    <p>{{trans "Penalty-Free Period: %overdraft_repay_period" overdraft_repay_period=$overdraft_repay_period}}</p>
+    {{depend overdraft_repay }}
+        <p>{{trans "Overdue Penalty: %overdraft_penalty%" overdraft_penalty=$overdraft_penalty}}</p>
+    {{/depend}}
+{{/if}}
+
+{{template config_path="design/email/footer_template"}}

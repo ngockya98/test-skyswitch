@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Amasty\CompanyAccount\Block\Order\Info" name="order.placed" after="order.date"
+                   template="Amasty_CompanyAccount::company/orders/order/info.phtml">
+                <arguments>
+                    <argument name="orderInfo" xsi:type="object">Amasty\CompanyAccount\ViewModel\Order</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <block class="Amasty\CompanyAccount\Block\Order\Info\Buttons"
+               template="Amasty_CompanyAccount::company/orders/order/info/buttons.phtml"
+               name="sales.order.info.buttons" />
+    </body>
+</page>

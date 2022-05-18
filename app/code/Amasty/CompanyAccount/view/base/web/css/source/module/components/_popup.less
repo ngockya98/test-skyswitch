@@ -1,0 +1,74 @@
+//
+//  Popup
+//  _____________________________________
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-popup-block {
+        & {
+            z-index: 99999;
+            box-sizing: border-box;
+        }
+
+        .modal-title {
+            padding: 0;
+            border: none;
+        }
+
+        .modal-inner-wrap {
+            max-width: 520px;
+            width: 100%;
+            border: 1px solid #fff;
+            border-radius: 4px;
+        }
+
+        .modal-header {
+            box-sizing: border-box;
+            margin: 0;
+            padding: @amcompany__indent__l * 2 @amcompany__indent @amcompany__indent;
+            width: 100%;
+            border: none;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .amcompany-notice {
+            display: block;
+            margin: 0;
+            padding: 0 0 @amcompany__indent;
+            width: 100%;
+            border-bottom: 1px solid #c1c1c1;
+            text-align: center;
+            word-break: break-word;
+            font-weight: 400;
+            font-size: 12px;
+        }
+
+        .modal-footer {
+            .am-flex(flex-end, center);
+
+            padding: @amcompany__indent__m @amcompany__indent__m @amcompany__indent__xl;
+        }
+
+        .amcompany-button {
+            margin: 0 @amcompany__indent 0 0;
+        }
+    }
+}
+
+//
+//  Tablet +
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amcompany-popup-block .modal-inner-wrap .modal-footer {
+        border-top: none;
+    }
+}

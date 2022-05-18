@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()):?>
+    <div class="box-tocart">
+        <div style="margin-bottom: 10px; display:none;">
+            <span id="distributor-name" style="font-weight: bold;"></span>
+            <span id="distributor-available">
+                <?=$block->escapeHtml($_product->getExtensionAttributes()->getStockItem()->getQty())?>
+            </span>
+            <input type="hidden"
+                   id="product-qty"
+                   value="<?=$block->escapeHtml($_product->getExtensionAttributes()->getStockItem()->getQty())?>" />
+        </div>
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()):?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                    <div class="control">
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               min="0"
+                               value="<?= $block->getProductDefaultQty() * 1 ?>"
+                               title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
+                               class="input-text qty"
+                               data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                               onblur="validateQty()"
+                        />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button" disabled>
+                    <span><?= $block->escapeHtml($buttonTitle) ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+        </div>
+        <div style="display: none;">
+            <?php foreach (explode(',', $_product->getData('distributors')) as $distributor_id):?>
+                <span id="distributor-<?=$block->escapeHtml($block->getDistributorName($distributor_id))?>">
+                <?=$block->escapeHtml($block->getDistributorStock($_product, $distributor_id))?>
+            </span>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>
+<script>
+    function validateQty() {
+        var qty = parseInt(document.getElementById('qty').value);
+        var available = parseInt( document.getElementById('distributor-available').innerText);
+
+        if (qty > available) {
+            document.getElementById('qty').value = available;
+        }
+    }
+</script>

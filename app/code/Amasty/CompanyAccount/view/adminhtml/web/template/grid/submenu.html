@@ -1,0 +1,20 @@
+<ul
+    class="action-submenu"
+    data-bind="foreach: {data: action.actions, as: 'action'},
+    css: { _active: action.visible }">
+    <li data-bind="css: { '_visible': $data.visible}">
+        <div data-bind="" class="amcompany-customer-action-form">
+                <label class="amasty-customer-action-label" for="amasty-customer-action-select" data-bind="i18n: action.fieldLabel"></label>
+                <select id="amasty-customer-action-select"
+                        class="admin__control-select amasty-customer-action-select"
+                        data-bind="
+                                options: action.child,
+                                optionsText: 'label',
+                                optionsValue: 'fieldvalue'">
+                </select>
+                <button type="button" data-bind="click: function() {$parent.applyMassaction(action)}" class="action-save">
+                    <span data-bind="i18n: 'Apply'"></span>
+                </button>
+        </div>
+    </li>
+</ul>

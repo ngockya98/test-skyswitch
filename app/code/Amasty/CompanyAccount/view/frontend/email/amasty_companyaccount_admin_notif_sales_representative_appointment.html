@@ -1,0 +1,19 @@
+<!--@subject You are appointed to {{var company_name }} as Sales Representative @-->
+<!--@vars {
+"var company_name":"Company Name",
+"var customer_name":"Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p><strong>{{var customer_name}}</strong></p>
+
+            <p>{{trans "You have been appointed as the Sales Representative to %name company." name=$company_name}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

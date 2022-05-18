@@ -1,0 +1,111 @@
+<?php
+/** @var Amasty\CompanyAccount\Block\Company\Profile $block */
+$company = $block->getCurrentCompany()
+?>
+<h1 class="amcompany-title"><?= $block->escapeHtml(__('Company Account')) ?></h1>
+<?php if ($block->isCurrentUserCompanyUser()): ?>
+    <?php if ($block->isEditAllowed()): ?>
+        <a class="action view" href="<?= $block->escapeUrl($block->getActionUrl()) ?>">
+            <?= $block->escapeHtml(__('Edit')) ?>
+        </a>
+    <?php endif; ?>
+    <div class="block amcompany-profile-status">
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__('Status')) ?></strong>
+        </div>
+        <div class="block-content">
+            <div class="box amcompany-information">
+                <div class="block-box-content">
+                    <p>
+                        <span><?= $block->escapeHtml($block->getCompanyStatus()) ?></span>
+                    </p>
+                </div>
+            </div>
+            <div class="box amcompany-information">
+                <div class="block-box-content">
+                    <p>
+                        <span><?= $block->escapeHtml($block->getStatusComment()) ?></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block block-profile-account">
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__('Company Information')) ?></strong>
+        </div>
+        <div class="block-content">
+            <div class="box amcompany-information">
+                <div class="amcompany-box-content">
+                        <p><?= $block->escapeHtml($block->getCompanyNameLabel()) ?></p>
+                        <?php if ($company->getCompanyEmail()): ?>
+                            <p><?= $block->escapeHtml($company->getCompanyEmail()) ?></p>
+                        <?php endif; ?>
+                        <?php if ($company->getVatTaxId()): ?>
+                            <p><?= $block->escapeHtml($block->getVatTaxLabel()); ?></p>
+                        <?php endif; ?>
+                        <?php if ($company->getResellerId()): ?>
+                            <p><?= $block->escapeHtml($block->getResellerIdLabel()); ?></p>
+                        <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block amcompany-profile-address">
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__('Company Legal Address')) ?></strong>
+        </div>
+        <div class="block-content">
+            <div class="box amcompany-address-information">
+                <div class="amcompany-box-content">
+                    <address>
+                        <?php if ($company->getStreet()): ?>
+                            <p><?= $block->escapeHtml($block->getStreetLabel()) ?></p>
+                        <?php endif; ?>
+                        <p><?= $block->escapeHtml($block->getAddressLabel()) ?></p>
+                        <p><?= $block->escapeHtml($block->getCountryLabel()) ?></p>
+                        <p><?= $block->escapeHtml($block->getTelephoneLabel()) ?></p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block amcompany-profile-contacts">
+        <div class="block-title">
+            <strong>
+                <?= $block->escapeHtml(__('Contacts')) ?>
+            </strong>
+        </div>
+        <div class="block-content">
+            <div class="box box-contact-information">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Company Administrator')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <p><?= $block->escapeHtml($block->getAdminName()) ?></p>
+                    <?php if ($block->getAdminJobTitle()): ?>
+                        <p><?= $block->escapeHtml($block->getAdminJobTitle()) ?></p>
+                    <?php endif; ?>
+                    <p><?= $block->escapeHtml($block->getAdminEmail()) ?></p>
+                </div>
+            </div>
+            <?php if ($block->isShowRepresentative()): ?>
+                <div class="box box-contact-information">
+                    <strong class="box-title">
+                        <span><?= $block->escapeHtml(__('Sales Representative')) ?></span>
+                    </strong>
+                    <div class="box-content">
+                        <p><?= $block->escapeHtml($block->getSalesRepresentativeName()) ?></p>
+                        <p><?= $block->escapeHtml($block->getSalesRepresentativeEmail()) ?></p>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php else: ?>
+    <a class="action view" href="<?= $block->escapeUrl($block->getActionUrl()) ?>">
+        <?= $block->escapeHtml(__('Create')) ?>
+    </a>
+<?php endif; ?>

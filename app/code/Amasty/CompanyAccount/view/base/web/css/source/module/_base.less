@@ -1,0 +1,71 @@
+//
+//  Base and override Magento styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amcompany-customer-account .page-main {
+        .actions-toolbar {
+            .am-flex(none, center, wrap);
+
+            padding: @amcompany__indent 0;
+        }
+
+        .actions-toolbar > .primary,
+        .actions-toolbar > .secondary {
+            padding: @amcompany__indent / 2;
+            width: 100%;
+        }
+
+        a.action.view {
+            &:extend(.amcompany-button.-link all);
+        }
+
+        .action.primary {
+            &:extend(.amcompany-button:not(.-regular), .amcompany-button.-fill, .amcompany-button.-fill.-primary:not(.-disabled) all);
+        }
+
+        .amcompany-form-create > .amcompany-toolbar {
+            .am-flex(flex-end);
+
+            padding: @amcompany__indent__l 0;
+        }
+
+        .amcompany-fieldset {
+            margin: 0 0 22px 0;
+        }
+    }
+
+    .amasty_company-profile-index {
+        .amcompany-title {
+            display: inline-block;
+            padding: 0 @amcompany__indent 0 0;
+        }
+
+        .page-title-wrapper {
+            display: none;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .amcompany-customer-account .page-main {
+        .actions-toolbar > .primary,
+        .actions-toolbar > .secondary {
+            width: auto;
+        }
+    }
+}

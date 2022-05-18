@@ -1,0 +1,8 @@
+{
+    "teledynamics": {
+        "base_url": "https://tdapi-sandbox.teledynamics.com/api/v1/",
+        "username": "tdapi.SKY8700.test@teledynamics.com",
+        "password": "NchydB_&dD",
+        "address_key": "262640"
+    }
+}

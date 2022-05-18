@@ -1,0 +1,8 @@
+{
+    "jenne": {
+        "username": "jenne@skyswitch.com",
+        "password": "xJZK2l4m",
+        "soap_url": "http://WebService.jenne.com/",
+        "base_url": "https://webservice.jenne.com/JenneWebService.asmx"
+    }
+}

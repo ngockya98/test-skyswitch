@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_companyaccount" translate="label" type="text" sortOrder="031501" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Company Account</label>
+            <tab>amasty</tab>
+            <resource>Amasty_CompanyAccount::config</resource>
+            <group id="amasty_information" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Information</label>
+                <frontend_model>Amasty\CompanyAccount\Block\Adminhtml\System\Config\Information</frontend_model>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="url_key" translate="label comment" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>URL Key</label>
+                    <backend_model>Amasty\CompanyAccount\Model\Config\Backend\UrlKey</backend_model>
+                    <validate>required-entry validate-length minimum-length-3</validate>
+                </field>
+                <field id="allowed_groups" translate="label" sortOrder="2" showInDefault="1" showInWebsite="0"
+                       showInStore="0" type="multiselect">
+                    <label>Allow Company Creation for Customer Group(s)</label>
+                    <source_model>Magento\Customer\Model\Config\Source\Group\Multiselect</source_model>
+                    <frontend_model>Amasty\CompanyAccount\Block\Adminhtml\System\Config\Field\Multiselect</frontend_model>
+                </field>
+                <field id="auto_approve" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Approve Companies Automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If set to Yes, all new companies will automatically get Active status.]]></comment>
+                </field>
+                <field id="inactivate_customer" translate="label comment" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Inactivate Customer upon Removing from Company Account</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[if disabled, the customer will still remain Active after being removed from Company in admin panel. Note: you can change Customer's Status on Customer edit page.]]></comment>
+                </field>
+            </group>
+            <group id="admin_notif" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Admin Notifications</label>
+                <field id="sender" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="receiver" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Receiver for 'New Company' Notifications</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="new_company_request" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template for New Company Request</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\NewCompanyRequestEmailTemplate</source_model>
+                </field>
+                <field id="new_company_create" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template for New Company Creation</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\NewCompanyEmailTemplate</source_model>
+                </field>
+                <field id="sales_representative_appointment" translate="label" type="select"
+                       sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Sales Representative Appointment</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\SalesRepresentativeEmailTemplate</source_model>
+                </field>
+            </group>
+            <group id="customer_notif" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Customer Notifications</label>
+                <field id="sender" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="active_status" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template for Active Status</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\CompanyActiveEmailTemplate</source_model>
+                </field>
+                <field id="inactive_status" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template for Inactive Status</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\CompanyInactiveEmailTemplate</source_model>
+                </field>
+                <field id="rejected_status" translate="label" type="select"
+                       sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Rejected Status</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\CompanyRejectEmailTemplate</source_model>
+                </field>
+                <field id="customer_linking" translate="label" type="select"
+                       sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Customer Linking to a Company</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\CustomerCompanyLinkEmailTemplate</source_model>
+                </field>
+                <field id="customer_disable" translate="label" type="select"
+                       sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Delete Company</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\CustomerDisableEmailTemplate</source_model>
+                </field>
+                <field id="new_admin" translate="label" type="select"
+                       sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for New Company Administrator Appointment</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\NewCompanyAdminEmailTemplate</source_model>
+                </field>
+                <field id="admin_unassign" translate="label" type="select"
+                       sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Previous Company Administrator Unassignment</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\AdminUnassignEmailTemplate</source_model>
+                </field>
+                <field id="store_credit_changed" translate="label" type="select"
+                       sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Store Credit Changed by Admin</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\StoreCreditChanged</source_model>
+                </field>
+                <field id="overdraft_config_changed" translate="label" type="select"
+                       sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Changes Applied to Overdraft Configuration</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\OverdraftConfigChanged</source_model>
+                </field>
+                <field id="overdraft_used" translate="label" type="select"
+                       sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Overdraft Used</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\OverdraftUsed</source_model>
+                </field>
+                <field id="overdraft_penalty_applied" translate="label" type="select"
+                       sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template for Overdue Overdraft Warning</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\OverdraftPenalty</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="payment">
+            <group id="amasty_company_credit" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Company Store Credit (Amasty) </label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="order_status" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>New Order Status</label>
+                    <source_model>Amasty\CompanyAccount\Model\Source\Payment\OrderStatus</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="40" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="41" showInDefault="1" showInWebsite="1">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="active">1</field>
+                        <field id="allowspecific">1</field>
+                    </depends>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1">
+                    <label>Sort Order</label>
+                    <validate>validate-zero-or-greater validate-digits</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

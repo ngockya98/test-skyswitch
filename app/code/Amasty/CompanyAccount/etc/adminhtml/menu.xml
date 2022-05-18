@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_CompanyAccount::company_accounts" title="Amasty Company Accounts" module="Amasty_CompanyAccount" parent="Magento_Customer::customer" sortOrder="100" resource="Amasty_CompanyAccount::company_accounts"/>
+        <add id="Amasty_CompanyAccount::company_management" title="Manage Companies" translate="title" module="Amasty_CompanyAccount" sortOrder="10" parent="Amasty_CompanyAccount::company_accounts" action="amcompany/company/index" resource="Amasty_CompanyAccount::company_management"/>
+    </menu>
+</config>

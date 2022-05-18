@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="customer_id" type="integer" />
+        <attribute code="fusionauth_id" type="string" />
+        <attribute code="reseller_id" type="string" />
+        <attribute code="sky_switch_profile" type="SkySwitch\Auth\Api\Data\SkySwitchProfileInterface"/>
+        <attribute code="sky_switch_settings" type="SkySwitch\Auth\Api\Data\SkySwitchSettingsInterface" />
+    </extension_attributes>
+
+    <extension_attributes for="Amasty\CompanyAccount\Api\Data\CompanyInterface">
+        <attribute code="billing_platform" type="string" />
+    </extension_attributes>
+
+</config>

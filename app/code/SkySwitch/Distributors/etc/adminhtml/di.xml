@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="product_form_eav" xsi:type="array">
+                    <item name="class" xsi:type="string">SkySwitch\Distributors\Ui\DataProvider\Product\Form\Modifier\Eav</item>
+                    <item name="sortOrder" xsi:type="number">2000</item>
+                </item>
+                <item name="voipPrice" xsi:type="array">
+                    <item name="class" xsi:type="string">SkySwitch\Distributors\Ui\DataProvider\Product\Form\Modifier\Attributes</item>
+                    <item name="sortOrder" xsi:type="number">1000</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Catalog\Model\Config\Source\Product\Options\Price">
+        <plugin name="skyswitch_distributors_add_price_type" type="SkySwitch\Distributors\Plugin\Catalog\Model\Config\Source\Product\Options\FixedPrice" sortOrder="1"/>
+    </type>
+</config>

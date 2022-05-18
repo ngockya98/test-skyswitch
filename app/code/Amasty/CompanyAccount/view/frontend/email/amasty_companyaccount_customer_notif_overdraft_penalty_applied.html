@@ -1,0 +1,10 @@
+<!--@subject {{trans "Company Store Credit Overdraft is overdue" }} @-->
+<!--@vars {
+"var penalty":"Overdraft Penalty"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{trans "The overdraft payment period is overdue. Every day a %penalty% penalty is imposed on the entire overdraft amount until Current Balance is 0 or above." penalty=$penalty}}
+
+{{template config_path="design/email/footer_template"}}

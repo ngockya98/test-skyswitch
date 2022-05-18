@@ -1,0 +1,19 @@
+<!--@subject Now you are a Company Administrator of {{var company_name }} @-->
+<!--@vars {
+"var company_name":"Company Name",
+"var this.getUrl($store,'customer/account/',[_nosid:1])":"Customer Account URL"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td valign="top">
+            <p>{{trans "You have been appointed to %name as the Company Administrator." name=$company_name}}</p>
+            <p>{{trans "Please <a href="%customer_url">sign in</a> to manage company account and users."
+                customer_url=$this.getUrl($store,'customer/account/',[_nosid:1]) |raw}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

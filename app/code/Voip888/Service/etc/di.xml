@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Voip888\Service\Interfaces\Request888VoipInterface"
+                type="Voip888\Service\Resources\Request888Voip" />
+    <preference for="Voip888\Service\Interfaces\Item888VoipInterface"
+                type="Voip888\Service\Resources\Item888Voip" />
+    <preference for="Voip888\Service\Interfaces\Shipping888VoipInterface"
+                type="Voip888\Service\Resources\Shipping888Voip" />
+    <preference for="Voip888\Service\Interfaces\Tracking888VoipInterface"
+                type="Voip888\Service\Resources\Tracking888Voip" />
+    <preference for="Voip888\Service\Interfaces\Provisioning888VoipInterface"
+                type="Voip888\Service\Resources\Provisioning888Voip" />
+    <preference for="Voip888\Service\Interfaces\Mac888VoipInterface"
+                type="Voip888\Service\Resources\Mac888Voip" />
+</config>

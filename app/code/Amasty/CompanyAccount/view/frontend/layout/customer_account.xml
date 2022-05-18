@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="amcompany-customer-account"/>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Amasty\CompanyAccount\Block\Account\Delimiter"
+                   name="amcompany-customer-account-navigation-delimiter-1"
+                   template="Magento_Customer::account/navigation-delimiter.phtml">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">100</argument>
+                    <argument name="companyContext" xsi:type="object">Amasty\CompanyAccount\Model\CompanyContext</argument>
+                </arguments>
+            </block>
+            <block class="Amasty\CompanyAccount\Block\Link\CompanyAccountLink"
+                   name="amcompany-customer-account-tab-company-account">
+                <arguments>
+                    <argument name="path" xsi:type="string">amasty_company/profile/index</argument>
+                    <argument translate="true" name="label" xsi:type="string">Company Account</argument>
+                    <argument name="resource" xsi:type="string">Amasty_CompanyAccount::view_account</argument>
+                    <argument name="sortOrder" xsi:type="number">102</argument>
+                </arguments>
+            </block>
+            <block class="Amasty\CompanyAccount\Block\Link\StoreCreditLink"
+                   name="amcompany-customer-account-tab-company-credit">
+                <arguments>
+                    <argument name="path" xsi:type="string">amasty_company/credit/index</argument>
+                    <argument translate="true" name="label" xsi:type="string">Store Credit</argument>
+                    <argument name="resource" xsi:type="string">Amasty_CompanyAccount::use_credit</argument>
+                    <argument name="sortOrder" xsi:type="number">102</argument>
+                </arguments>
+            </block>
+            <block class="Amasty\CompanyAccount\Block\Link\UsersLink"
+                   name="amcompany-customer-account-tab-company-users">
+                <arguments>
+                    <argument name="path" xsi:type="string">amasty_company/user/index</argument>
+                    <argument translate="true" name="label" xsi:type="string">Users</argument>
+                    <argument name="resource" xsi:type="string">Amasty_CompanyAccount::users_view</argument>
+                    <argument name="sortOrder" xsi:type="number">102</argument>
+                </arguments>
+            </block>
+            <block class="Amasty\CompanyAccount\Block\Link\RolesLink"
+                   name="amcompany-customer-account-tab-company-roles">
+                <arguments>
+                    <argument name="path" xsi:type="string">amasty_company/role/index</argument>
+                    <argument translate="true" name="label" xsi:type="string">Roles</argument>
+                    <argument name="resource" xsi:type="string">Amasty_CompanyAccount::roles_view</argument>
+                    <argument name="sortOrder" xsi:type="number">102</argument>
+                </arguments>
+            </block>
+            <block class="Amasty\CompanyAccount\Block\Link\OrdersLink"
+                   name="amcompany-customer-account-tab-company-orders">
+                <arguments>
+                    <argument name="path" xsi:type="string">amasty_company/order/index</argument>
+                    <argument translate="true" name="label" xsi:type="string">Orders</argument>
+                    <argument name="resource" xsi:type="string">Amasty_CompanyAccount::orders_all_view</argument>
+                    <argument name="sortOrder" xsi:type="number">102</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

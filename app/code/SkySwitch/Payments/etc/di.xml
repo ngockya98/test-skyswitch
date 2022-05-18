@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magedelight\Authorizecim\Block\Info" type="SkySwitch\Payments\Block\Info" />
+    <preference for="Magedelight\Authorizecim\Model\ConfigProvider" type="SkySwitch\Payments\Model\ConfigProvider" />
+    <preference for="Magedelight\Authorizecim\Model\Payment" type="SkySwitch\Payments\Model\Payment" />
+    <preference for="Magedelight\Authorizecim\Controller\Cards\Save" type="SkySwitch\Payments\Controller\Cards\Save" />
+    <preference for="Magedelight\Authorizecim\Controller\Adminhtml\Cards\Save" type="SkySwitch\Payments\Controller\Adminhtml\Cards\Save" />
+    <preference for="Magedelight\Authorizecim\Controller\Adminhtml\Cards\Delete" type="SkySwitch\Payments\Controller\Adminhtml\Cards\Delete" />
+    <preference for="Magedelight\Authorizecim\Controller\Cards\Delete" type="SkySwitch\Payments\Controller\Cards\Delete" />
+    <preference for="Magedelight\Authorizecim\Controller\Adminhtml\Cards\Update" type="SkySwitch\Payments\Controller\Adminhtml\Cards\Update" />
+    <preference for="Magedelight\Authorizecim\Controller\Cards\Update" type="SkySwitch\Payments\Controller\Cards\Update" />
+</config>

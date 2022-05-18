@@ -1,0 +1,20 @@
+<?php
+/** @var \Amasty\CompanyAccount\Block\Order\Info\Buttons $block */
+?>
+
+<div class="actions">
+    <?php $order = $block->getOrder() ?>
+    <?php if ($block->canReorder($order)): ?>
+        <a href="#" data-post='<?= /* @noEscape */ $block->getPostData($block->getReorderUrl($order)) ?>'
+           class="action order">
+            <span><?= $block->escapeHtml(__('Reorder')) ?></span>
+        </a>
+    <?php endif ?>
+    <a href="<?= $block->escapeUrl($block->getPrintUrl($order)) ?>"
+       class="action print"
+       target="_blank"
+       rel="noopener">
+        <span><?= $block->escapeHtml(__('Print Order')) ?></span>
+    </a>
+    <?= $block->getChildHtml() ?>
+</div>

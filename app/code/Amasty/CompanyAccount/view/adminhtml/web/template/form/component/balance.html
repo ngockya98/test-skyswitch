@@ -1,0 +1,37 @@
+<div class="amcompany-paycard-block -balance-card">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title" data-bind="i18n: 'Current Balance'"></h3>
+            <span class="amcompany-value" data-bind="text: balance, attr: {'title': balance}">0.00</span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <ul class="amcompany-list-block">
+            <li class="amcompany-item">
+                <span class="amcompany-title" data-bind="i18n: 'Issued Credit:'"></span>
+                <span class="amcompany-value" data-bind="text: credit">0.00</span>
+            </li>
+            <!-- ko if: allow_overdraft -->
+                <li class="amcompany-item">
+                    <span class="amcompany-title" data-bind="i18n: 'Overdraft Limit:'"></span>
+                    <span class="amcompany-value" data-bind="text: overdraft_limit">0.00</span>
+                </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+
+    <div class="amcompany-actions">
+        <!-- ko if: isOperationsAvailable() -->
+            <button class="amcompany-button -clear"
+                    data-bind="click: openModal, attr: {
+                        'title': $t('Change Balance'),
+                        'aria-label': $t('Change Balance')
+                    }">
+                <i class="amcompany-icon">+</i>
+                <span data-bind="i18n: 'Change Balance'"></span>
+            </button>
+        <!-- /ko-->
+    </div>
+</div>

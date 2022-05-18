@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\CompanyAccount\Block\Credit\Credit" name="amcompany.credit" template="Amasty_CompanyAccount::company/credit/credit.phtml" cacheable="false">
+                <block class="Amasty\CompanyAccount\Block\Credit\Card" name="amcompany.credit.balance" as="balance" template="Amasty_CompanyAccount::company/credit/card/balance.phtml">
+                    <arguments>
+                        <argument name="companyContext" xsi:type="object">Amasty\CompanyAccount\Model\CompanyContext</argument>
+                    </arguments>
+                </block>
+                <block class="Amasty\CompanyAccount\Block\Credit\Card" name="amcompany.credit.paid" as="paid" template="Amasty_CompanyAccount::company/credit/card/paid.phtml">
+                    <arguments>
+                        <argument name="companyContext" xsi:type="object">Amasty\CompanyAccount\Model\CompanyContext</argument>
+                    </arguments>
+                </block>
+                <block class="Amasty\CompanyAccount\Block\Credit\Grid" name="amcompany.credit.grid" as="grid" template="Amasty_CompanyAccount::company/credit/grid.phtml">
+                    <arguments>
+                        <argument name="creditEvent" xsi:type="object">Amasty\CompanyAccount\ViewModel\CreditEvent</argument>
+                    </arguments>
+                    <block class="Magento\Theme\Block\Html\Pager" name="amcompany.credit.grid.pager" as="pager" />
+                </block>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="amcompany-customer-account-tab-company-credit">
+            <arguments>
+                <argument name="is_highlighted" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

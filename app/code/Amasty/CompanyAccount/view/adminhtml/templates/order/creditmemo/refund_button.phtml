@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var \Amasty\CompanyAccount\Block\Adminhtml\Order\CreditMemo\RefundButton $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<input type="hidden" name="creditmemo[do_offline_to_company]" data-amcompany="refund-to-company" value="0">
+<?= $block->getChildHtml('company_refund_button') ?>
+<?php //phpcs:ignore Magento2.Legacy.PhtmlTemplate.TextJavascriptTypeFound ?>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        submitCreditMemoOfflineToCompany = function() {
+            var creditMemoOffline = $('[data-amcompany="refund-to-company"]');
+            if (creditMemoOffline.length) {
+                creditMemoOffline.prop('value', 1);
+            }
+            submitCreditMemoOffline();
+        };
+    });
+</script>

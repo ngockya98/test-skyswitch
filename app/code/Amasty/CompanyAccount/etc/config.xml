@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_companyaccount>
+            <general>
+                <inactivate_customer>1</inactivate_customer>
+                <url_key>company</url_key>
+            </general>
+            <admin_notif>
+                <sender>general</sender>
+                <receiver>general</receiver>
+                <new_company_request>amasty_companyaccount_admin_notif_new_company_request</new_company_request>
+                <new_company_create>amasty_companyaccount_admin_notif_new_company_create</new_company_create>
+                <sales_representative_appointment>amasty_companyaccount_admin_notif_sales_representative_appointment</sales_representative_appointment>
+            </admin_notif>
+            <customer_notif>
+                <sender>sales</sender>
+                <active_status>amasty_companyaccount_customer_notif_active_status</active_status>
+                <inactive_status>amasty_companyaccount_customer_notif_inactive_status</inactive_status>
+                <rejected_status>amasty_companyaccount_customer_notif_rejected_status</rejected_status>
+                <customer_linking>amasty_companyaccount_customer_notif_customer_linking</customer_linking>
+                <customer_disable>amasty_companyaccount_customer_notif_customer_disable</customer_disable>
+                <new_admin>amasty_companyaccount_customer_notif_new_admin</new_admin>
+                <admin_unassign>amasty_companyaccount_customer_notif_admin_unassign</admin_unassign>
+                <store_credit_changed>amasty_companyaccount_customer_notif_store_credit_changed</store_credit_changed>
+                <overdraft_config_changed>amasty_companyaccount_customer_notif_overdraft_config_changed</overdraft_config_changed>
+                <overdraft_used>amasty_companyaccount_customer_notif_overdraft_used</overdraft_used>
+                <overdraft_penalty_applied>amasty_companyaccount_customer_notif_overdraft_penalty_applied</overdraft_penalty_applied>
+            </customer_notif>
+        </amasty_companyaccount>
+        <payment>
+            <amasty_company_credit>
+                <title>Company Store Credit</title>
+                <order_status>pending</order_status>
+                <model>AmastyCompanyCreditFacade</model>
+                <payment_action>authorize_capture</payment_action>
+                <can_initialize>0</can_initialize>
+                <can_order>1</can_order>
+                <can_refund>1</can_refund>
+                <can_refund_partial_per_invoice>1</can_refund_partial_per_invoice>
+                <can_capture>1</can_capture>
+                <can_cancel>1</can_cancel>
+                <can_use_checkout>1</can_use_checkout>
+                <is_offline>1</is_offline>
+            </amasty_company_credit>
+        </payment>
+    </default>
+</config>

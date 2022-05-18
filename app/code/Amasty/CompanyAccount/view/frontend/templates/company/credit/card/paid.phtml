@@ -1,0 +1,72 @@
+<?php
+use Amasty\CompanyAccount\Api\Data\CreditInterface;
+
+/** @var \Amasty\CompanyAccount\Block\Credit\Card $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$exceedClass = ($block->isOverdraftExist() && $block->isOverdraftExceed()) ? '-exceed' : '';
+?>
+
+<div class="amcompany-paycard-block -bepaid-card <?= $escaper->escapeHtmlAttr($exceedClass) ?>">
+    <div class="amcompany-head">
+        <div class="amcompany-paycard-current">
+            <h3 class="amcompany-title">
+                <?= $escaper->escapeHtml('To Be Paid') ?>
+                <div class="amcompany-tooltip-block" tabindex="1">
+                    <div class="amcompany-tooltip-content">
+                        <?= $escaper->escapeHtml(__(
+                            'Calculated as {used_store_credit} minus {repayment_amount}, where:'
+                            . ' {used_store_credit} is the sum of orders paid with store credit less refunded amounts,'
+                            . ' {repayment_amount} is the sum of real money actually paid by Company to cover'
+                            . ' store credit usage. Positive amount - the Company owes. Negative amount - the Store owes.'
+                        )) ?>
+                    </div>
+                </div>
+            </h3>
+            <span class="amcompany-value"
+                  title="<?= $escaper->escapeHtmlAttr($block->getCreditPrice(CreditInterface::BE_PAID)) ?>">
+                <?= $escaper->escapeHtml($block->getCreditPrice(CreditInterface::BE_PAID)) ?>
+            </span>
+        </div>
+        <span class="amcompany-icon-paycard"></span>
+    </div>
+
+    <div class="amcompany-content">
+        <?php if ($block->isOverdraftExist()): ?>
+            <div class="amcompany-message">
+                <?php if ($block->isOverdraftExceed()): ?>
+                    <i class="amcompany-icon-warning"></i>
+                    <span>
+                        <?= $escaper->escapeHtml(__(
+                            'Warning! The overdraft payment period is overdue. Every day a <strong>%1%</strong> penalty is imposed on the entire overdraft amount(%2).',
+                            $block->getCredit()->getOverdraftPenalty(),
+                            $block->getOverdraftSum()
+                        ), ['strong']) ?>
+                    </span>
+                    <div class="amcompany-tooltip-block" tabindex="1">
+                        <div class="amcompany-tooltip-content">
+                            <?= $escaper->escapeHtml(__(
+                                'The negative store credit balance has to be repaid until the stated date, otherwise the penalty will be applied every day to the whole overdraft amount.'
+                            )) ?>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <span>
+                        <?= $escaper->escapeHtml(__(
+                            'The overdraft amount(%2) is due by <strong>%1</strong> inclusive.',
+                            $block->getOverdraft()->getRepayDate(),
+                            $block->getOverdraftSum()
+                        ), ['strong']) ?>
+                    </span>
+                    <div class="amcompany-tooltip-block" tabindex="1">
+                        <div class="amcompany-tooltip-content">
+                            <?= $escaper->escapeHtml(
+                                __('The penalty will be applied everyday on the overdraft amount until the Current Balance is positive or 0.')
+                            ) ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

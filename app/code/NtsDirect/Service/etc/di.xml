@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="NtsDirect\Service\Interfaces\ItemInterface"
+                type="NtsDirect\Service\Model\Api\Item" />
+    <preference for="NtsDirect\Service\Interfaces\OrderInterface"
+                type="NtsDirect\Service\Model\Api\Order" />
+    <preference for="NtsDirect\Service\Interfaces\RequestNtsInterface"
+                type="NtsDirect\Service\Model\Api\RequestNts" />
+</config>
